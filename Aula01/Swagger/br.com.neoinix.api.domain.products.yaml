@@ -1,0 +1,716 @@
+swagger: '2.0'
+info:
+  version: v1
+  title: Neoinix API Products
+  description: API erd
+host: api.neoinix.com.br
+securityDefinitions:
+  products_auth:
+    type: oauth2
+    tokenUrl: https://parceiro.neoinix.com.br/oauth2/token
+    flow: application
+    scopes:
+      write: Permite modificar entidades na sua conta.
+      read: Permite ler entidades na sua conta.
+      company: Token da empresa usuaria dos sitemas NEOINIX deve usar company:tokenNeoinix
+security:
+  - products_auth:
+    - write
+    - read
+    - company
+schemes:
+  - https
+basePath: /products
+tags:
+- name: Products
+  description: |
+            Products
+
+paths:
+  /Products:
+    get:
+      operationId: "Products_listAll"
+      summary: Lista todos os registros de Products.
+      description: |
+          Limitado a 100 registros, para mais resultados usar o listRange em conjunto com count.
+      tags:
+        - Products
+      parameters:
+      - name: "productCode"
+        in: "query"
+        description: "Filtra registros por productCode"
+        type: string
+      - name: "productName"
+        in: "query"
+        description: "Filtra registros por productName"
+        type: string
+      - name: "standardCost"
+        in: "query"
+        description: "Filtra registros por standardCost"
+        type: number
+      - name: "listPrice"
+        in: "query"
+        description: "Filtra registros por listPrice"
+        type: number
+      - name: "reorderLevel"
+        in: "query"
+        description: "Filtra registros por reorderLevel"
+        type: integer
+      - name: "targetLevel"
+        in: "query"
+        description: "Filtra registros por targetLevel"
+        type: integer
+      - name: "quantityPerUnit"
+        in: "query"
+        description: "Filtra registros por quantityPerUnit"
+        type: string
+      - name: "discontinued"
+        in: "query"
+        description: "Filtra registros por discontinued"
+        type: integer
+      - name: "minimumReorderQuantity"
+        in: "query"
+        description: "Filtra registros por minimumReorderQuantity"
+        type: integer
+      - name: "category"
+        in: "query"
+        description: "Filtra registros por category"
+        type: string
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/products.Products'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    post:
+      operationId: "Products_create"
+      summary: Cria um registro de Products.
+      tags:
+        - Products
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+        schema:
+              $ref: '#/definitions/products.Products'
+      responses:
+        '200':
+          description: OK
+          schema:
+              $ref: '#/definitions/products.Products'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /Products/count:
+    get:
+      operationId: "Products_count"
+      summary: Retorna contagem dos registros de Products.
+      tags:
+        - Products
+      parameters:
+      - name: "productCode"
+        in: "query"
+        description: "Filtra registros por productCode"
+        type: string
+      - name: "productName"
+        in: "query"
+        description: "Filtra registros por productName"
+        type: string
+      - name: "standardCost"
+        in: "query"
+        description: "Filtra registros por standardCost"
+        type: number
+      - name: "listPrice"
+        in: "query"
+        description: "Filtra registros por listPrice"
+        type: number
+      - name: "reorderLevel"
+        in: "query"
+        description: "Filtra registros por reorderLevel"
+        type: integer
+      - name: "targetLevel"
+        in: "query"
+        description: "Filtra registros por targetLevel"
+        type: integer
+      - name: "quantityPerUnit"
+        in: "query"
+        description: "Filtra registros por quantityPerUnit"
+        type: string
+      - name: "discontinued"
+        in: "query"
+        description: "Filtra registros por discontinued"
+        type: integer
+      - name: "minimumReorderQuantity"
+        in: "query"
+        description: "Filtra registros por minimumReorderQuantity"
+        type: integer
+      - name: "category"
+        in: "query"
+        description: "Filtra registros por category"
+        type: string
+      produces:
+      - "application/json"
+      responses: 
+        '200': 
+          description: OK 
+          schema: 
+              $ref: '#/definitions/CountResult' 
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /Products/{from}/{to}:
+    get:
+      operationId: "Products_listRange"
+      summary: Lista os registros de Products por faixa de posição.
+      description: |
+          Observar que a faixa inicia em 0 e o limite máximo é de 100 itens retornados total.
+          Deve ser usado em conjunto com o count para determinar qtos itens tem no total, e no seu aplicativo fazer o controle de paginas.
+          Por exemplo, ao usar um determinado filtro o count retorna o valor de 240 itens, e no seu aplicativo usa 20 itens por pagina:
+          A primeira pagina vai ser from = 0 e o to = 19
+          A segunda pagina vai ser from = 20 e o to = 39
+          e assim sucessivamente até ler toda a lista.
+          ATENÇÃO para usar o mesmo filtro (query parameters) no count e no listRange para evitar divergencia no tamanho da lista, lembrando que a lista pode aumentar caso novos registros sejam inseridos no banco, durante a leitura paginada.
+      tags:
+        - Products
+      parameters:
+      - name: "from"
+        in: "path"
+        required: true
+        type: "integer"
+      - name: "to"
+        in: "path"
+        required: true
+        type: "integer"
+      - name: "productCode"
+        in: "query"
+        description: "Filtra registros por productCode"
+        type: string
+      - name: "productName"
+        in: "query"
+        description: "Filtra registros por productName"
+        type: string
+      - name: "standardCost"
+        in: "query"
+        description: "Filtra registros por standardCost"
+        type: number
+      - name: "listPrice"
+        in: "query"
+        description: "Filtra registros por listPrice"
+        type: number
+      - name: "reorderLevel"
+        in: "query"
+        description: "Filtra registros por reorderLevel"
+        type: integer
+      - name: "targetLevel"
+        in: "query"
+        description: "Filtra registros por targetLevel"
+        type: integer
+      - name: "quantityPerUnit"
+        in: "query"
+        description: "Filtra registros por quantityPerUnit"
+        type: string
+      - name: "discontinued"
+        in: "query"
+        description: "Filtra registros por discontinued"
+        type: integer
+      - name: "minimumReorderQuantity"
+        in: "query"
+        description: "Filtra registros por minimumReorderQuantity"
+        type: integer
+      - name: "category"
+        in: "query"
+        description: "Filtra registros por category"
+        type: string
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/products.Products'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /Products/id/{value}:
+    get:
+      operationId: "Products_byId_read"
+      summary: Retorna o respectivo registro de Products usando o ID da API.
+      tags:
+        - Products
+      parameters:
+      - name: "value"
+        in: "path"
+        required: true
+        type: "integer"
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/products.Products'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    put:
+      operationId: "Products_update" 
+      summary: Altera o respectivo registro de Products.
+      tags:
+        - Products
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "value"
+        in: "path"
+        required: true
+        type: "integer"
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+        schema:
+          $ref: '#/definitions/products.Products'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+definitions:
+  IdReference:
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+  CountResult:
+    type: object
+    properties:
+      count:
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+  IdErpReference:
+    type: object
+    properties:
+      idErp:
+        type: string
+  UuidReference:
+    type: object
+    properties:
+      uuid:
+        type: string
+  ErrorResponse:
+    type: object
+    properties:
+      code:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int32
+        description: |
+            Código do erro
+      message:
+        type: string
+        description: |
+            Mensagem resumida sobre o erro
+      description:
+        type: string
+        description: |
+            Detalhes para melhor entendimento do erro
+  products.Products:
+    description: |
+            Products
+
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int64
+        description: |
+            ID para referência interna da API
+      version:
+        type: string
+        format: date-time
+        description: |
+            Data e hora da versão do registro. Usado principalmente para sincronização e controle de lock otimista.
+            Mantido pela API, não deve ser alterado, mas em caso de alterações deve ser copiado o valor recebido.
+            Em inclusões deve vir vazio, ao gravar a API irá retornar a primeira versão.
+            Em alterações deve vir o mesmo valor que verio no ultimo retorno de consulta do registro, ao gravar o sistema vai gerar um novo valor.
+            Somente com o valor certo desse campo, que registros podem ser atualizados.
+      supplierIds:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      productCode:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      productName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      description:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      standardCost:
+        type: number
+        minimum: 0.0
+        maximum: 9999999999999999999.9999
+        format: double
+        description: |
+
+      listPrice:
+        type: number
+        minimum: 0.0
+        maximum: 9999999999999999999.9999
+        format: double
+        description: |
+
+      reorderLevel:
+        type: integer
+        minimum: 0
+        maximum: 999
+        format: int32
+        description: |
+
+      targetLevel:
+        type: integer
+        minimum: 0
+        maximum: 999
+        format: int32
+        description: |
+
+      quantityPerUnit:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      discontinued:
+        type: integer
+        minimum: 0
+        maximum: 9
+        format: int32
+        description: |
+
+      minimumReorderQuantity:
+        type: integer
+        minimum: 0
+        maximum: 999
+        format: int32
+        description: |
+
+      category:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      attachments:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+

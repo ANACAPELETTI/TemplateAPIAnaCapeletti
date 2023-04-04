@@ -1,0 +1,2068 @@
+swagger: '2.0'
+info:
+  version: v1
+  title: Neoinix API Inventory
+  description: API erd
+host: api.neoinix.com.br
+securityDefinitions:
+  inventory_auth:
+    type: oauth2
+    tokenUrl: https://parceiro.neoinix.com.br/oauth2/token
+    flow: application
+    scopes:
+      write: Permite modificar entidades na sua conta.
+      read: Permite ler entidades na sua conta.
+      company: Token da empresa usuaria dos sitemas NEOINIX deve usar company:tokenNeoinix
+security:
+  - inventory_auth:
+    - write
+    - read
+    - company
+schemes:
+  - https
+basePath: /inventory
+tags:
+- name: InventoryTransactionTypes
+  description: |
+            Inventory Transaction Types
+
+- name: InventoryTransactions
+  description: |
+            Inventory Transactions
+
+paths:
+  /InventoryTransactionTypes:
+    get:
+      operationId: "InventoryTransactionTypes_listAll"
+      summary: Lista todos os registros de InventoryTransactionTypes.
+      description: |
+          Limitado a 100 registros, para mais resultados usar o listRange em conjunto com count.
+      tags:
+        - InventoryTransactionTypes
+      parameters:
+      - name: "typeName"
+        in: "query"
+        description: "Filtra registros por typeName"
+        type: string
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/inventory.InventoryTransactionTypes'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    post:
+      operationId: "InventoryTransactionTypes_create"
+      summary: Cria um registro de InventoryTransactionTypes.
+      tags:
+        - InventoryTransactionTypes
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+        schema:
+              $ref: '#/definitions/inventory.InventoryTransactionTypes'
+      responses:
+        '200':
+          description: OK
+          schema:
+              $ref: '#/definitions/inventory.InventoryTransactionTypes'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /InventoryTransactionTypes/count:
+    get:
+      operationId: "InventoryTransactionTypes_count"
+      summary: Retorna contagem dos registros de InventoryTransactionTypes.
+      tags:
+        - InventoryTransactionTypes
+      parameters:
+      - name: "typeName"
+        in: "query"
+        description: "Filtra registros por typeName"
+        type: string
+      produces:
+      - "application/json"
+      responses: 
+        '200': 
+          description: OK 
+          schema: 
+              $ref: '#/definitions/CountResult' 
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /InventoryTransactionTypes/{from}/{to}:
+    get:
+      operationId: "InventoryTransactionTypes_listRange"
+      summary: Lista os registros de InventoryTransactionTypes por faixa de posição.
+      description: |
+          Observar que a faixa inicia em 0 e o limite máximo é de 100 itens retornados total.
+          Deve ser usado em conjunto com o count para determinar qtos itens tem no total, e no seu aplicativo fazer o controle de paginas.
+          Por exemplo, ao usar um determinado filtro o count retorna o valor de 240 itens, e no seu aplicativo usa 20 itens por pagina:
+          A primeira pagina vai ser from = 0 e o to = 19
+          A segunda pagina vai ser from = 20 e o to = 39
+          e assim sucessivamente até ler toda a lista.
+          ATENÇÃO para usar o mesmo filtro (query parameters) no count e no listRange para evitar divergencia no tamanho da lista, lembrando que a lista pode aumentar caso novos registros sejam inseridos no banco, durante a leitura paginada.
+      tags:
+        - InventoryTransactionTypes
+      parameters:
+      - name: "from"
+        in: "path"
+        required: true
+        type: "integer"
+      - name: "to"
+        in: "path"
+        required: true
+        type: "integer"
+      - name: "typeName"
+        in: "query"
+        description: "Filtra registros por typeName"
+        type: string
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/inventory.InventoryTransactionTypes'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /InventoryTransactionTypes/id/{value}:
+    get:
+      operationId: "InventoryTransactionTypes_byId_read"
+      summary: Retorna o respectivo registro de InventoryTransactionTypes usando o ID da API.
+      tags:
+        - InventoryTransactionTypes
+      parameters:
+      - name: "value"
+        in: "path"
+        required: true
+        type: "integer"
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/inventory.InventoryTransactionTypes'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    put:
+      operationId: "InventoryTransactionTypes_update" 
+      summary: Altera o respectivo registro de InventoryTransactionTypes.
+      tags:
+        - InventoryTransactionTypes
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "value"
+        in: "path"
+        required: true
+        type: "integer"
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+        schema:
+          $ref: '#/definitions/inventory.InventoryTransactionTypes'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /InventoryTransactions:
+    get:
+      operationId: "InventoryTransactions_listAll"
+      summary: Lista todos os registros de InventoryTransactions.
+      description: |
+          Limitado a 100 registros, para mais resultados usar o listRange em conjunto com count.
+      tags:
+        - InventoryTransactions
+      parameters:
+      - name: "transactionType"
+        in: "query"
+        description: "Filtra registros por transactionType"
+        type: integer
+      - name: "transactionCreatedDate"
+        in: "query"
+        description: "Filtra registros por transactionCreatedDate"
+        type: string
+      - name: "transactionModifiedDate"
+        in: "query"
+        description: "Filtra registros por transactionModifiedDate"
+        type: string
+      - name: "product.id"
+        in: "query"
+        description: "Filtra registros por product usando ID interno da API"
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      - name: "quantity"
+        in: "query"
+        description: "Filtra registros por quantity"
+        type: integer
+      - name: "purchaseOrder.id"
+        in: "query"
+        description: "Filtra registros por purchaseOrder usando ID interno da API"
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      - name: "customerOrder.id"
+        in: "query"
+        description: "Filtra registros por customerOrder usando ID interno da API"
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      - name: "comments"
+        in: "query"
+        description: "Filtra registros por comments"
+        type: string
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/inventory.InventoryTransactions'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    post:
+      operationId: "InventoryTransactions_create"
+      summary: Cria um registro de InventoryTransactions.
+      tags:
+        - InventoryTransactions
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+        schema:
+              $ref: '#/definitions/inventory.InventoryTransactions'
+      responses:
+        '200':
+          description: OK
+          schema:
+              $ref: '#/definitions/inventory.InventoryTransactions'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /InventoryTransactions/count:
+    get:
+      operationId: "InventoryTransactions_count"
+      summary: Retorna contagem dos registros de InventoryTransactions.
+      tags:
+        - InventoryTransactions
+      parameters:
+      - name: "transactionType"
+        in: "query"
+        description: "Filtra registros por transactionType"
+        type: integer
+      - name: "transactionCreatedDate"
+        in: "query"
+        description: "Filtra registros por transactionCreatedDate"
+        type: string
+      - name: "transactionModifiedDate"
+        in: "query"
+        description: "Filtra registros por transactionModifiedDate"
+        type: string
+      - name: "product.id"
+        in: "query"
+        description: "Filtra registros por product usando ID interno da API"
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      - name: "quantity"
+        in: "query"
+        description: "Filtra registros por quantity"
+        type: integer
+      - name: "purchaseOrder.id"
+        in: "query"
+        description: "Filtra registros por purchaseOrder usando ID interno da API"
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      - name: "customerOrder.id"
+        in: "query"
+        description: "Filtra registros por customerOrder usando ID interno da API"
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      - name: "comments"
+        in: "query"
+        description: "Filtra registros por comments"
+        type: string
+      produces:
+      - "application/json"
+      responses: 
+        '200': 
+          description: OK 
+          schema: 
+              $ref: '#/definitions/CountResult' 
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /InventoryTransactions/{from}/{to}:
+    get:
+      operationId: "InventoryTransactions_listRange"
+      summary: Lista os registros de InventoryTransactions por faixa de posição.
+      description: |
+          Observar que a faixa inicia em 0 e o limite máximo é de 100 itens retornados total.
+          Deve ser usado em conjunto com o count para determinar qtos itens tem no total, e no seu aplicativo fazer o controle de paginas.
+          Por exemplo, ao usar um determinado filtro o count retorna o valor de 240 itens, e no seu aplicativo usa 20 itens por pagina:
+          A primeira pagina vai ser from = 0 e o to = 19
+          A segunda pagina vai ser from = 20 e o to = 39
+          e assim sucessivamente até ler toda a lista.
+          ATENÇÃO para usar o mesmo filtro (query parameters) no count e no listRange para evitar divergencia no tamanho da lista, lembrando que a lista pode aumentar caso novos registros sejam inseridos no banco, durante a leitura paginada.
+      tags:
+        - InventoryTransactions
+      parameters:
+      - name: "from"
+        in: "path"
+        required: true
+        type: "integer"
+      - name: "to"
+        in: "path"
+        required: true
+        type: "integer"
+      - name: "transactionType"
+        in: "query"
+        description: "Filtra registros por transactionType"
+        type: integer
+      - name: "transactionCreatedDate"
+        in: "query"
+        description: "Filtra registros por transactionCreatedDate"
+        type: string
+      - name: "transactionModifiedDate"
+        in: "query"
+        description: "Filtra registros por transactionModifiedDate"
+        type: string
+      - name: "product.id"
+        in: "query"
+        description: "Filtra registros por product usando ID interno da API"
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      - name: "quantity"
+        in: "query"
+        description: "Filtra registros por quantity"
+        type: integer
+      - name: "purchaseOrder.id"
+        in: "query"
+        description: "Filtra registros por purchaseOrder usando ID interno da API"
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      - name: "customerOrder.id"
+        in: "query"
+        description: "Filtra registros por customerOrder usando ID interno da API"
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      - name: "comments"
+        in: "query"
+        description: "Filtra registros por comments"
+        type: string
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/inventory.InventoryTransactions'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /InventoryTransactions/id/{value}:
+    get:
+      operationId: "InventoryTransactions_byId_read"
+      summary: Retorna o respectivo registro de InventoryTransactions usando o ID da API.
+      tags:
+        - InventoryTransactions
+      parameters:
+      - name: "value"
+        in: "path"
+        required: true
+        type: "integer"
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/inventory.InventoryTransactions'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    put:
+      operationId: "InventoryTransactions_update" 
+      summary: Altera o respectivo registro de InventoryTransactions.
+      tags:
+        - InventoryTransactions
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "value"
+        in: "path"
+        required: true
+        type: "integer"
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+        schema:
+          $ref: '#/definitions/inventory.InventoryTransactions'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+definitions:
+  IdReference:
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+  CountResult:
+    type: object
+    properties:
+      count:
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+  IdErpReference:
+    type: object
+    properties:
+      idErp:
+        type: string
+  UuidReference:
+    type: object
+    properties:
+      uuid:
+        type: string
+  ErrorResponse:
+    type: object
+    properties:
+      code:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int32
+        description: |
+            Código do erro
+      message:
+        type: string
+        description: |
+            Mensagem resumida sobre o erro
+      description:
+        type: string
+        description: |
+            Detalhes para melhor entendimento do erro
+  inventory.InventoryTransactionTypes:
+    description: |
+            Inventory Transaction Types
+
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int64
+        description: |
+            ID para referência interna da API
+      version:
+        type: string
+        format: date-time
+        description: |
+            Data e hora da versão do registro. Usado principalmente para sincronização e controle de lock otimista.
+            Mantido pela API, não deve ser alterado, mas em caso de alterações deve ser copiado o valor recebido.
+            Em inclusões deve vir vazio, ao gravar a API irá retornar a primeira versão.
+            Em alterações deve vir o mesmo valor que verio no ultimo retorno de consulta do registro, ao gravar o sistema vai gerar um novo valor.
+            Somente com o valor certo desse campo, que registros podem ser atualizados.
+      typeName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+  inventory.InventoryTransactions:
+    description: |
+            Inventory Transactions
+
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int64
+        description: |
+            ID para referência interna da API
+      version:
+        type: string
+        format: date-time
+        description: |
+            Data e hora da versão do registro. Usado principalmente para sincronização e controle de lock otimista.
+            Mantido pela API, não deve ser alterado, mas em caso de alterações deve ser copiado o valor recebido.
+            Em inclusões deve vir vazio, ao gravar a API irá retornar a primeira versão.
+            Em alterações deve vir o mesmo valor que verio no ultimo retorno de consulta do registro, ao gravar o sistema vai gerar um novo valor.
+            Somente com o valor certo desse campo, que registros podem ser atualizados.
+      transactionType:
+        type: integer
+        minimum: 0
+        maximum: 999
+        format: int32
+        description: |
+
+      transactionCreatedDate:
+        type: string
+        format: date-time
+        description: |
+
+      transactionModifiedDate:
+        type: string
+        format: date-time
+        description: |
+
+      product:
+        description: |
+
+        allOf:
+          - $ref: '#/definitions/IdReference'
+      quantity:
+        type: integer
+        minimum: 0
+        maximum: 999
+        format: int32
+        description: |
+
+      purchaseOrder:
+        description: |
+
+        allOf:
+          - $ref: '#/definitions/IdReference'
+      customerOrder:
+        description: |
+
+        allOf:
+          - $ref: '#/definitions/IdReference'
+      comments:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+  products.Products:
+    description: |
+            Products
+
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int64
+        description: |
+            ID para referência interna da API
+      version:
+        type: string
+        format: date-time
+        description: |
+            Data e hora da versão do registro. Usado principalmente para sincronização e controle de lock otimista.
+            Mantido pela API, não deve ser alterado, mas em caso de alterações deve ser copiado o valor recebido.
+            Em inclusões deve vir vazio, ao gravar a API irá retornar a primeira versão.
+            Em alterações deve vir o mesmo valor que verio no ultimo retorno de consulta do registro, ao gravar o sistema vai gerar um novo valor.
+            Somente com o valor certo desse campo, que registros podem ser atualizados.
+      supplierIds:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      productCode:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      productName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      description:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      standardCost:
+        type: number
+        minimum: 0.0
+        maximum: 9999999999999999999.9999
+        format: double
+        description: |
+
+      listPrice:
+        type: number
+        minimum: 0.0
+        maximum: 9999999999999999999.9999
+        format: double
+        description: |
+
+      reorderLevel:
+        type: integer
+        minimum: 0
+        maximum: 999
+        format: int32
+        description: |
+
+      targetLevel:
+        type: integer
+        minimum: 0
+        maximum: 999
+        format: int32
+        description: |
+
+      quantityPerUnit:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      discontinued:
+        type: integer
+        minimum: 0
+        maximum: 9
+        format: int32
+        description: |
+
+      minimumReorderQuantity:
+        type: integer
+        minimum: 0
+        maximum: 999
+        format: int32
+        description: |
+
+      category:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      attachments:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+  purchases.PurchaseOrders:
+    description: |
+            Purchase Orders
+
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int64
+        description: |
+            ID para referência interna da API
+      version:
+        type: string
+        format: date-time
+        description: |
+            Data e hora da versão do registro. Usado principalmente para sincronização e controle de lock otimista.
+            Mantido pela API, não deve ser alterado, mas em caso de alterações deve ser copiado o valor recebido.
+            Em inclusões deve vir vazio, ao gravar a API irá retornar a primeira versão.
+            Em alterações deve vir o mesmo valor que verio no ultimo retorno de consulta do registro, ao gravar o sistema vai gerar um novo valor.
+            Somente com o valor certo desse campo, que registros podem ser atualizados.
+      supplier:
+        description: |
+
+        allOf:
+          - $ref: '#/definitions/IdReference'
+      createdBy:
+        type: integer
+        minimum: 0
+        maximum: 999
+        format: int32
+        description: |
+
+      submittedDate:
+        type: string
+        format: date-time
+        description: |
+
+      creationDate:
+        type: string
+        format: date-time
+        description: |
+
+      status:
+        description: |
+
+        allOf:
+          - $ref: '#/definitions/IdReference'
+      expectedDate:
+        type: string
+        format: date-time
+        description: |
+
+      shippingFee:
+        type: number
+        minimum: 0.0
+        maximum: 9999999999999999999.9999
+        format: double
+        description: |
+
+      taxes:
+        type: number
+        minimum: 0.0
+        maximum: 9999999999999999999.9999
+        format: double
+        description: |
+
+      paymentDate:
+        type: string
+        format: date-time
+        description: |
+
+      paymentAmount:
+        type: number
+        minimum: 0.0
+        maximum: 9999999999999999999.9999
+        format: double
+        description: |
+
+      paymentMethod:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      notes:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      approvedBy:
+        type: integer
+        minimum: 0
+        maximum: 999
+        format: int32
+        description: |
+
+      approvedDate:
+        type: string
+        format: date-time
+        description: |
+
+      submittedBy:
+        type: integer
+        minimum: 0
+        maximum: 999
+        format: int32
+        description: |
+
+  sales.Orders:
+    description: |
+            Orders
+
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int64
+        description: |
+            ID para referência interna da API
+      version:
+        type: string
+        format: date-time
+        description: |
+            Data e hora da versão do registro. Usado principalmente para sincronização e controle de lock otimista.
+            Mantido pela API, não deve ser alterado, mas em caso de alterações deve ser copiado o valor recebido.
+            Em inclusões deve vir vazio, ao gravar a API irá retornar a primeira versão.
+            Em alterações deve vir o mesmo valor que verio no ultimo retorno de consulta do registro, ao gravar o sistema vai gerar um novo valor.
+            Somente com o valor certo desse campo, que registros podem ser atualizados.
+      employee:
+        description: |
+
+        allOf:
+          - $ref: '#/definitions/IdReference'
+      customer:
+        description: |
+
+        allOf:
+          - $ref: '#/definitions/IdReference'
+      orderDate:
+        type: string
+        format: date-time
+        description: |
+
+      shippedDate:
+        type: string
+        format: date-time
+        description: |
+
+      shipper:
+        description: |
+
+        allOf:
+          - $ref: '#/definitions/IdReference'
+      shipName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      shipAddress:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      shipCity:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      shipStateProvince:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      shipZipPostalCode:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      shipCountryRegion:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      shippingFee:
+        type: number
+        minimum: 0.0
+        maximum: 9999999999999999999.9999
+        format: double
+        description: |
+
+      taxes:
+        type: number
+        minimum: 0.0
+        maximum: 9999999999999999999.9999
+        format: double
+        description: |
+
+      paymentType:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      paidDate:
+        type: string
+        format: date-time
+        description: |
+
+      notes:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      taxRate:
+        type: number
+        minimum: 0.0
+        maximum: 9999999999.99
+        format: double
+        description: |
+
+      taxStatus:
+        description: |
+
+        allOf:
+          - $ref: '#/definitions/IdReference'
+      status:
+        description: |
+
+        allOf:
+          - $ref: '#/definitions/IdReference'
+  purchases.Suppliers:
+    description: |
+            Suppliers
+
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int64
+        description: |
+            ID para referência interna da API
+      version:
+        type: string
+        format: date-time
+        description: |
+            Data e hora da versão do registro. Usado principalmente para sincronização e controle de lock otimista.
+            Mantido pela API, não deve ser alterado, mas em caso de alterações deve ser copiado o valor recebido.
+            Em inclusões deve vir vazio, ao gravar a API irá retornar a primeira versão.
+            Em alterações deve vir o mesmo valor que verio no ultimo retorno de consulta do registro, ao gravar o sistema vai gerar um novo valor.
+            Somente com o valor certo desse campo, que registros podem ser atualizados.
+      company:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      lastName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      firstName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      emailAddress:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      jobTitle:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      businessPhone:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      homePhone:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      mobilePhone:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      faxNumber:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      address:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      city:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      stateProvince:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      zipPostalCode:
+        type: string
+        maxLength: 15
+        pattern: \w*\W*
+        description: |
+
+      countryRegion:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      webPage:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      notes:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      attachments:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+  purchases.PurchaseOrderStatus:
+    description: |
+            Purchase Order Status
+
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int64
+        description: |
+            ID para referência interna da API
+      version:
+        type: string
+        format: date-time
+        description: |
+            Data e hora da versão do registro. Usado principalmente para sincronização e controle de lock otimista.
+            Mantido pela API, não deve ser alterado, mas em caso de alterações deve ser copiado o valor recebido.
+            Em inclusões deve vir vazio, ao gravar a API irá retornar a primeira versão.
+            Em alterações deve vir o mesmo valor que verio no ultimo retorno de consulta do registro, ao gravar o sistema vai gerar um novo valor.
+            Somente com o valor certo desse campo, que registros podem ser atualizados.
+      status:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+  hr.Employees:
+    description: |
+            Employees
+
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int64
+        description: |
+            ID para referência interna da API
+      version:
+        type: string
+        format: date-time
+        description: |
+            Data e hora da versão do registro. Usado principalmente para sincronização e controle de lock otimista.
+            Mantido pela API, não deve ser alterado, mas em caso de alterações deve ser copiado o valor recebido.
+            Em inclusões deve vir vazio, ao gravar a API irá retornar a primeira versão.
+            Em alterações deve vir o mesmo valor que verio no ultimo retorno de consulta do registro, ao gravar o sistema vai gerar um novo valor.
+            Somente com o valor certo desse campo, que registros podem ser atualizados.
+      company:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      lastName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      firstName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      emailAddress:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      jobTitle:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      businessPhone:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      homePhone:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      mobilePhone:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      faxNumber:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      address:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      city:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      stateProvince:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      zipPostalCode:
+        type: string
+        maxLength: 15
+        pattern: \w*\W*
+        description: |
+
+      countryRegion:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      webPage:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      notes:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      attachments:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+  customers.Customers:
+    description: |
+            Customers
+
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int64
+        description: |
+            ID para referência interna da API
+      version:
+        type: string
+        format: date-time
+        description: |
+            Data e hora da versão do registro. Usado principalmente para sincronização e controle de lock otimista.
+            Mantido pela API, não deve ser alterado, mas em caso de alterações deve ser copiado o valor recebido.
+            Em inclusões deve vir vazio, ao gravar a API irá retornar a primeira versão.
+            Em alterações deve vir o mesmo valor que verio no ultimo retorno de consulta do registro, ao gravar o sistema vai gerar um novo valor.
+            Somente com o valor certo desse campo, que registros podem ser atualizados.
+      company:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      lastName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      firstName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      emailAddress:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      jobTitle:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      businessPhone:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      homePhone:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      mobilePhone:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      faxNumber:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      address:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      city:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      stateProvince:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      zipPostalCode:
+        type: string
+        maxLength: 15
+        pattern: \w*\W*
+        description: |
+
+      countryRegion:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      webPage:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      notes:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      attachments:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+  sales.Shippers:
+    description: |
+            Shippers
+
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int64
+        description: |
+            ID para referência interna da API
+      version:
+        type: string
+        format: date-time
+        description: |
+            Data e hora da versão do registro. Usado principalmente para sincronização e controle de lock otimista.
+            Mantido pela API, não deve ser alterado, mas em caso de alterações deve ser copiado o valor recebido.
+            Em inclusões deve vir vazio, ao gravar a API irá retornar a primeira versão.
+            Em alterações deve vir o mesmo valor que verio no ultimo retorno de consulta do registro, ao gravar o sistema vai gerar um novo valor.
+            Somente com o valor certo desse campo, que registros podem ser atualizados.
+      company:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      lastName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      firstName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      emailAddress:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      jobTitle:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      businessPhone:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      homePhone:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      mobilePhone:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      faxNumber:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      address:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      city:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      stateProvince:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      zipPostalCode:
+        type: string
+        maxLength: 15
+        pattern: \w*\W*
+        description: |
+
+      countryRegion:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      webPage:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      notes:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      attachments:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+  sales.OrdersTaxStatus:
+    description: |
+            Orders Tax Status
+
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int64
+        description: |
+            ID para referência interna da API
+      version:
+        type: string
+        format: date-time
+        description: |
+            Data e hora da versão do registro. Usado principalmente para sincronização e controle de lock otimista.
+            Mantido pela API, não deve ser alterado, mas em caso de alterações deve ser copiado o valor recebido.
+            Em inclusões deve vir vazio, ao gravar a API irá retornar a primeira versão.
+            Em alterações deve vir o mesmo valor que verio no ultimo retorno de consulta do registro, ao gravar o sistema vai gerar um novo valor.
+            Somente com o valor certo desse campo, que registros podem ser atualizados.
+      taxStatusName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+  sales.OrdersStatus:
+    description: |
+            Orders Status
+
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int64
+        description: |
+            ID para referência interna da API
+      version:
+        type: string
+        format: date-time
+        description: |
+            Data e hora da versão do registro. Usado principalmente para sincronização e controle de lock otimista.
+            Mantido pela API, não deve ser alterado, mas em caso de alterações deve ser copiado o valor recebido.
+            Em inclusões deve vir vazio, ao gravar a API irá retornar a primeira versão.
+            Em alterações deve vir o mesmo valor que verio no ultimo retorno de consulta do registro, ao gravar o sistema vai gerar um novo valor.
+            Somente com o valor certo desse campo, que registros podem ser atualizados.
+      statusName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+

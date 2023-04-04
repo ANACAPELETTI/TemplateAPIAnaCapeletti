@@ -1,0 +1,1698 @@
+swagger: '2.0'
+info:
+  version: v1
+  title: Neoinix API HR
+  description: API erd
+host: api.neoinix.com.br
+securityDefinitions:
+  hr_auth:
+    type: oauth2
+    tokenUrl: https://parceiro.neoinix.com.br/oauth2/token
+    flow: application
+    scopes:
+      write: Permite modificar entidades na sua conta.
+      read: Permite ler entidades na sua conta.
+      company: Token da empresa usuaria dos sitemas NEOINIX deve usar company:tokenNeoinix
+security:
+  - hr_auth:
+    - write
+    - read
+    - company
+schemes:
+  - https
+basePath: /hr
+tags:
+- name: EmployeePrivileges
+  description: |
+            Employee Privileges
+
+- name: Employees
+  description: |
+            Employees
+
+- name: Privileges
+  description: |
+            Privileges
+
+paths:
+  /EmployeePrivileges:
+    get:
+      operationId: "EmployeePrivileges_listAll"
+      summary: Lista todos os registros de EmployeePrivileges.
+      description: |
+          Limitado a 100 registros, para mais resultados usar o listRange em conjunto com count.
+      tags:
+        - EmployeePrivileges
+      parameters:
+      - name: "privilege.id"
+        in: "query"
+        description: "Filtra registros por privilege usando ID interno da API"
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/hr.EmployeePrivileges'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    post:
+      operationId: "EmployeePrivileges_create"
+      summary: Cria um registro de EmployeePrivileges.
+      tags:
+        - EmployeePrivileges
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+        schema:
+              $ref: '#/definitions/hr.EmployeePrivileges'
+      responses:
+        '200':
+          description: OK
+          schema:
+              $ref: '#/definitions/hr.EmployeePrivileges'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /EmployeePrivileges/count:
+    get:
+      operationId: "EmployeePrivileges_count"
+      summary: Retorna contagem dos registros de EmployeePrivileges.
+      tags:
+        - EmployeePrivileges
+      parameters:
+      - name: "privilege.id"
+        in: "query"
+        description: "Filtra registros por privilege usando ID interno da API"
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      produces:
+      - "application/json"
+      responses: 
+        '200': 
+          description: OK 
+          schema: 
+              $ref: '#/definitions/CountResult' 
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /EmployeePrivileges/{from}/{to}:
+    get:
+      operationId: "EmployeePrivileges_listRange"
+      summary: Lista os registros de EmployeePrivileges por faixa de posição.
+      description: |
+          Observar que a faixa inicia em 0 e o limite máximo é de 100 itens retornados total.
+          Deve ser usado em conjunto com o count para determinar qtos itens tem no total, e no seu aplicativo fazer o controle de paginas.
+          Por exemplo, ao usar um determinado filtro o count retorna o valor de 240 itens, e no seu aplicativo usa 20 itens por pagina:
+          A primeira pagina vai ser from = 0 e o to = 19
+          A segunda pagina vai ser from = 20 e o to = 39
+          e assim sucessivamente até ler toda a lista.
+          ATENÇÃO para usar o mesmo filtro (query parameters) no count e no listRange para evitar divergencia no tamanho da lista, lembrando que a lista pode aumentar caso novos registros sejam inseridos no banco, durante a leitura paginada.
+      tags:
+        - EmployeePrivileges
+      parameters:
+      - name: "from"
+        in: "path"
+        required: true
+        type: "integer"
+      - name: "to"
+        in: "path"
+        required: true
+        type: "integer"
+      - name: "privilege.id"
+        in: "query"
+        description: "Filtra registros por privilege usando ID interno da API"
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/hr.EmployeePrivileges'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /EmployeePrivileges/id/{value}:
+    get:
+      operationId: "EmployeePrivileges_byId_read"
+      summary: Retorna o respectivo registro de EmployeePrivileges usando o ID da API.
+      tags:
+        - EmployeePrivileges
+      parameters:
+      - name: "value"
+        in: "path"
+        required: true
+        type: "integer"
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/hr.EmployeePrivileges'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    put:
+      operationId: "EmployeePrivileges_update" 
+      summary: Altera o respectivo registro de EmployeePrivileges.
+      tags:
+        - EmployeePrivileges
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "value"
+        in: "path"
+        required: true
+        type: "integer"
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+        schema:
+          $ref: '#/definitions/hr.EmployeePrivileges'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /Employees:
+    get:
+      operationId: "Employees_listAll"
+      summary: Lista todos os registros de Employees.
+      description: |
+          Limitado a 100 registros, para mais resultados usar o listRange em conjunto com count.
+      tags:
+        - Employees
+      parameters:
+      - name: "company"
+        in: "query"
+        description: "Filtra registros por company"
+        type: string
+      - name: "lastName"
+        in: "query"
+        description: "Filtra registros por lastName"
+        type: string
+      - name: "firstName"
+        in: "query"
+        description: "Filtra registros por firstName"
+        type: string
+      - name: "emailAddress"
+        in: "query"
+        description: "Filtra registros por emailAddress"
+        type: string
+      - name: "jobTitle"
+        in: "query"
+        description: "Filtra registros por jobTitle"
+        type: string
+      - name: "businessPhone"
+        in: "query"
+        description: "Filtra registros por businessPhone"
+        type: string
+      - name: "homePhone"
+        in: "query"
+        description: "Filtra registros por homePhone"
+        type: string
+      - name: "mobilePhone"
+        in: "query"
+        description: "Filtra registros por mobilePhone"
+        type: string
+      - name: "faxNumber"
+        in: "query"
+        description: "Filtra registros por faxNumber"
+        type: string
+      - name: "city"
+        in: "query"
+        description: "Filtra registros por city"
+        type: string
+      - name: "stateProvince"
+        in: "query"
+        description: "Filtra registros por stateProvince"
+        type: string
+      - name: "zipPostalCode"
+        in: "query"
+        description: "Filtra registros por zipPostalCode"
+        type: string
+      - name: "countryRegion"
+        in: "query"
+        description: "Filtra registros por countryRegion"
+        type: string
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/hr.Employees'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    post:
+      operationId: "Employees_create"
+      summary: Cria um registro de Employees.
+      tags:
+        - Employees
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+        schema:
+              $ref: '#/definitions/hr.Employees'
+      responses:
+        '200':
+          description: OK
+          schema:
+              $ref: '#/definitions/hr.Employees'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /Employees/count:
+    get:
+      operationId: "Employees_count"
+      summary: Retorna contagem dos registros de Employees.
+      tags:
+        - Employees
+      parameters:
+      - name: "company"
+        in: "query"
+        description: "Filtra registros por company"
+        type: string
+      - name: "lastName"
+        in: "query"
+        description: "Filtra registros por lastName"
+        type: string
+      - name: "firstName"
+        in: "query"
+        description: "Filtra registros por firstName"
+        type: string
+      - name: "emailAddress"
+        in: "query"
+        description: "Filtra registros por emailAddress"
+        type: string
+      - name: "jobTitle"
+        in: "query"
+        description: "Filtra registros por jobTitle"
+        type: string
+      - name: "businessPhone"
+        in: "query"
+        description: "Filtra registros por businessPhone"
+        type: string
+      - name: "homePhone"
+        in: "query"
+        description: "Filtra registros por homePhone"
+        type: string
+      - name: "mobilePhone"
+        in: "query"
+        description: "Filtra registros por mobilePhone"
+        type: string
+      - name: "faxNumber"
+        in: "query"
+        description: "Filtra registros por faxNumber"
+        type: string
+      - name: "city"
+        in: "query"
+        description: "Filtra registros por city"
+        type: string
+      - name: "stateProvince"
+        in: "query"
+        description: "Filtra registros por stateProvince"
+        type: string
+      - name: "zipPostalCode"
+        in: "query"
+        description: "Filtra registros por zipPostalCode"
+        type: string
+      - name: "countryRegion"
+        in: "query"
+        description: "Filtra registros por countryRegion"
+        type: string
+      produces:
+      - "application/json"
+      responses: 
+        '200': 
+          description: OK 
+          schema: 
+              $ref: '#/definitions/CountResult' 
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /Employees/{from}/{to}:
+    get:
+      operationId: "Employees_listRange"
+      summary: Lista os registros de Employees por faixa de posição.
+      description: |
+          Observar que a faixa inicia em 0 e o limite máximo é de 100 itens retornados total.
+          Deve ser usado em conjunto com o count para determinar qtos itens tem no total, e no seu aplicativo fazer o controle de paginas.
+          Por exemplo, ao usar um determinado filtro o count retorna o valor de 240 itens, e no seu aplicativo usa 20 itens por pagina:
+          A primeira pagina vai ser from = 0 e o to = 19
+          A segunda pagina vai ser from = 20 e o to = 39
+          e assim sucessivamente até ler toda a lista.
+          ATENÇÃO para usar o mesmo filtro (query parameters) no count e no listRange para evitar divergencia no tamanho da lista, lembrando que a lista pode aumentar caso novos registros sejam inseridos no banco, durante a leitura paginada.
+      tags:
+        - Employees
+      parameters:
+      - name: "from"
+        in: "path"
+        required: true
+        type: "integer"
+      - name: "to"
+        in: "path"
+        required: true
+        type: "integer"
+      - name: "company"
+        in: "query"
+        description: "Filtra registros por company"
+        type: string
+      - name: "lastName"
+        in: "query"
+        description: "Filtra registros por lastName"
+        type: string
+      - name: "firstName"
+        in: "query"
+        description: "Filtra registros por firstName"
+        type: string
+      - name: "emailAddress"
+        in: "query"
+        description: "Filtra registros por emailAddress"
+        type: string
+      - name: "jobTitle"
+        in: "query"
+        description: "Filtra registros por jobTitle"
+        type: string
+      - name: "businessPhone"
+        in: "query"
+        description: "Filtra registros por businessPhone"
+        type: string
+      - name: "homePhone"
+        in: "query"
+        description: "Filtra registros por homePhone"
+        type: string
+      - name: "mobilePhone"
+        in: "query"
+        description: "Filtra registros por mobilePhone"
+        type: string
+      - name: "faxNumber"
+        in: "query"
+        description: "Filtra registros por faxNumber"
+        type: string
+      - name: "city"
+        in: "query"
+        description: "Filtra registros por city"
+        type: string
+      - name: "stateProvince"
+        in: "query"
+        description: "Filtra registros por stateProvince"
+        type: string
+      - name: "zipPostalCode"
+        in: "query"
+        description: "Filtra registros por zipPostalCode"
+        type: string
+      - name: "countryRegion"
+        in: "query"
+        description: "Filtra registros por countryRegion"
+        type: string
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/hr.Employees'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /Employees/id/{value}:
+    get:
+      operationId: "Employees_byId_read"
+      summary: Retorna o respectivo registro de Employees usando o ID da API.
+      tags:
+        - Employees
+      parameters:
+      - name: "value"
+        in: "path"
+        required: true
+        type: "integer"
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/hr.Employees'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    put:
+      operationId: "Employees_update" 
+      summary: Altera o respectivo registro de Employees.
+      tags:
+        - Employees
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "value"
+        in: "path"
+        required: true
+        type: "integer"
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+        schema:
+          $ref: '#/definitions/hr.Employees'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /Privileges:
+    get:
+      operationId: "Privileges_listAll"
+      summary: Lista todos os registros de Privileges.
+      description: |
+          Limitado a 100 registros, para mais resultados usar o listRange em conjunto com count.
+      tags:
+        - Privileges
+      parameters:
+      - name: "privilegeName"
+        in: "query"
+        description: "Filtra registros por privilegeName"
+        type: string
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/hr.Privileges'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    post:
+      operationId: "Privileges_create"
+      summary: Cria um registro de Privileges.
+      tags:
+        - Privileges
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+        schema:
+              $ref: '#/definitions/hr.Privileges'
+      responses:
+        '200':
+          description: OK
+          schema:
+              $ref: '#/definitions/hr.Privileges'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /Privileges/count:
+    get:
+      operationId: "Privileges_count"
+      summary: Retorna contagem dos registros de Privileges.
+      tags:
+        - Privileges
+      parameters:
+      - name: "privilegeName"
+        in: "query"
+        description: "Filtra registros por privilegeName"
+        type: string
+      produces:
+      - "application/json"
+      responses: 
+        '200': 
+          description: OK 
+          schema: 
+              $ref: '#/definitions/CountResult' 
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /Privileges/{from}/{to}:
+    get:
+      operationId: "Privileges_listRange"
+      summary: Lista os registros de Privileges por faixa de posição.
+      description: |
+          Observar que a faixa inicia em 0 e o limite máximo é de 100 itens retornados total.
+          Deve ser usado em conjunto com o count para determinar qtos itens tem no total, e no seu aplicativo fazer o controle de paginas.
+          Por exemplo, ao usar um determinado filtro o count retorna o valor de 240 itens, e no seu aplicativo usa 20 itens por pagina:
+          A primeira pagina vai ser from = 0 e o to = 19
+          A segunda pagina vai ser from = 20 e o to = 39
+          e assim sucessivamente até ler toda a lista.
+          ATENÇÃO para usar o mesmo filtro (query parameters) no count e no listRange para evitar divergencia no tamanho da lista, lembrando que a lista pode aumentar caso novos registros sejam inseridos no banco, durante a leitura paginada.
+      tags:
+        - Privileges
+      parameters:
+      - name: "from"
+        in: "path"
+        required: true
+        type: "integer"
+      - name: "to"
+        in: "path"
+        required: true
+        type: "integer"
+      - name: "privilegeName"
+        in: "query"
+        description: "Filtra registros por privilegeName"
+        type: string
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/hr.Privileges'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /Privileges/id/{value}:
+    get:
+      operationId: "Privileges_byId_read"
+      summary: Retorna o respectivo registro de Privileges usando o ID da API.
+      tags:
+        - Privileges
+      parameters:
+      - name: "value"
+        in: "path"
+        required: true
+        type: "integer"
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/hr.Privileges'
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    put:
+      operationId: "Privileges_update" 
+      summary: Altera o respectivo registro de Privileges.
+      tags:
+        - Privileges
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "value"
+        in: "path"
+        required: true
+        type: "integer"
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+        schema:
+          $ref: '#/definitions/hr.Privileges'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: "A requisição foi malformada, omitindo atributos obrigatórios, seja no payload ou através de atributos na URL."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: "Cabeçalho de autenticação ausente/inválido ou token inválido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: "O token tem escopo incorreto ou uma política de segurança foi violada"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: "O recurso solicitado não existe ou não foi implementado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '405':
+          description: "O consumidor tentou acessar o recurso com um método não suportado"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '406':
+          description: "A solicitação continha um cabeçalho Accept diferente dos tipos de mídia permitidos ou um conjunto de caracteres diferente de UTF-8"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '422':
+          description: "A sintaxe da requisição esta correta, mas não foi possível processar as instruções presentes."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '423':
+          description: "O recurso está bloqueado."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '429':
+          description: "A operação foi recusada, pois muitas solicitações foram feitas dentro de um determinado período ou o limite global de requisições concorrentes foi atingido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: "Ocorreu um erro no gateway da API ou no microsserviço"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '504':
+          description: "GATEWAY TIMEOUT - A requisição não foi atendida dentro do tempo limite estabelecido"
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '529':
+          description: "O site está sobrecarregado e a operação foi recusada, pois foi atingido o limite máximo de TPS global, neste momento."
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+definitions:
+  IdReference:
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+  CountResult:
+    type: object
+    properties:
+      count:
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+        format: int32
+  IdErpReference:
+    type: object
+    properties:
+      idErp:
+        type: string
+  UuidReference:
+    type: object
+    properties:
+      uuid:
+        type: string
+  ErrorResponse:
+    type: object
+    properties:
+      code:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int32
+        description: |
+            Código do erro
+      message:
+        type: string
+        description: |
+            Mensagem resumida sobre o erro
+      description:
+        type: string
+        description: |
+            Detalhes para melhor entendimento do erro
+  hr.EmployeePrivileges:
+    description: |
+            Employee Privileges
+
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int64
+        description: |
+            ID para referência interna da API
+      version:
+        type: string
+        format: date-time
+        description: |
+            Data e hora da versão do registro. Usado principalmente para sincronização e controle de lock otimista.
+            Mantido pela API, não deve ser alterado, mas em caso de alterações deve ser copiado o valor recebido.
+            Em inclusões deve vir vazio, ao gravar a API irá retornar a primeira versão.
+            Em alterações deve vir o mesmo valor que verio no ultimo retorno de consulta do registro, ao gravar o sistema vai gerar um novo valor.
+            Somente com o valor certo desse campo, que registros podem ser atualizados.
+      privilege:
+        description: |
+
+        allOf:
+          - $ref: '#/definitions/IdReference'
+  hr.Employees:
+    description: |
+            Employees
+
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int64
+        description: |
+            ID para referência interna da API
+      version:
+        type: string
+        format: date-time
+        description: |
+            Data e hora da versão do registro. Usado principalmente para sincronização e controle de lock otimista.
+            Mantido pela API, não deve ser alterado, mas em caso de alterações deve ser copiado o valor recebido.
+            Em inclusões deve vir vazio, ao gravar a API irá retornar a primeira versão.
+            Em alterações deve vir o mesmo valor que verio no ultimo retorno de consulta do registro, ao gravar o sistema vai gerar um novo valor.
+            Somente com o valor certo desse campo, que registros podem ser atualizados.
+      company:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      lastName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      firstName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      emailAddress:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      jobTitle:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      businessPhone:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      homePhone:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      mobilePhone:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      faxNumber:
+        type: string
+        maxLength: 25
+        pattern: \w*\W*
+        description: |
+
+      address:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      city:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      stateProvince:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      zipPostalCode:
+        type: string
+        maxLength: 15
+        pattern: \w*\W*
+        description: |
+
+      countryRegion:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+
+      webPage:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      notes:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+      attachments:
+        type: string
+        maxLength: 255
+        pattern: \w*\W*
+        description: |
+
+  hr.Privileges:
+    description: |
+            Privileges
+
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+        maximum: 9999999999999
+        format: int64
+        description: |
+            ID para referência interna da API
+      version:
+        type: string
+        format: date-time
+        description: |
+            Data e hora da versão do registro. Usado principalmente para sincronização e controle de lock otimista.
+            Mantido pela API, não deve ser alterado, mas em caso de alterações deve ser copiado o valor recebido.
+            Em inclusões deve vir vazio, ao gravar a API irá retornar a primeira versão.
+            Em alterações deve vir o mesmo valor que verio no ultimo retorno de consulta do registro, ao gravar o sistema vai gerar um novo valor.
+            Somente com o valor certo desse campo, que registros podem ser atualizados.
+      privilegeName:
+        type: string
+        maxLength: 50
+        pattern: \w*\W*
+        description: |
+

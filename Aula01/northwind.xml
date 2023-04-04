@@ -1,0 +1,337 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="northwind">
+	<table_structure name="customers">
+		<field Field="id" Type="int" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="company" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="last_name" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="first_name" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="email_address" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="job_title" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="business_phone" Type="varchar(25)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="home_phone" Type="varchar(25)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="mobile_phone" Type="varchar(25)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="fax_number" Type="varchar(25)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="address" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="city" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="state_province" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="zip_postal_code" Type="varchar(15)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="country_region" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="web_page" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="notes" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="attachments" Type="longblob" Null="YES" Key="" Extra="" Comment="" />
+		<key Table="customers" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="customers" Non_unique="1" Key_name="city" Seq_in_index="1" Column_name="city" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="customers" Non_unique="1" Key_name="company" Seq_in_index="1" Column_name="company" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="customers" Non_unique="1" Key_name="first_name" Seq_in_index="1" Column_name="first_name" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="customers" Non_unique="1" Key_name="last_name" Seq_in_index="1" Column_name="last_name" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="customers" Non_unique="1" Key_name="zip_postal_code" Seq_in_index="1" Column_name="zip_postal_code" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="customers" Non_unique="1" Key_name="state_province" Seq_in_index="1" Column_name="state_province" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="customers" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="98304" Data_free="0" Auto_increment="1" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="employee_privileges">
+		<field Field="employee_id" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="privilege_id" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<key Table="employee_privileges" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="employee_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="employee_privileges" Non_unique="0" Key_name="PRIMARY" Seq_in_index="2" Column_name="privilege_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="employee_privileges" Non_unique="1" Key_name="employee_id" Seq_in_index="1" Column_name="employee_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="employee_privileges" Non_unique="1" Key_name="privilege_id" Seq_in_index="1" Column_name="privilege_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="employee_privileges" Non_unique="1" Key_name="privilege_id_2" Seq_in_index="1" Column_name="privilege_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="employee_privileges" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="49152" Data_free="0" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="employees">
+		<field Field="id" Type="int" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="company" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="last_name" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="first_name" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="email_address" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="job_title" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="business_phone" Type="varchar(25)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="home_phone" Type="varchar(25)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="mobile_phone" Type="varchar(25)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="fax_number" Type="varchar(25)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="address" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="city" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="state_province" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="zip_postal_code" Type="varchar(15)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="country_region" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="web_page" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="notes" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="attachments" Type="longblob" Null="YES" Key="" Extra="" Comment="" />
+		<key Table="employees" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="employees" Non_unique="1" Key_name="city" Seq_in_index="1" Column_name="city" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="employees" Non_unique="1" Key_name="company" Seq_in_index="1" Column_name="company" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="employees" Non_unique="1" Key_name="first_name" Seq_in_index="1" Column_name="first_name" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="employees" Non_unique="1" Key_name="last_name" Seq_in_index="1" Column_name="last_name" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="employees" Non_unique="1" Key_name="zip_postal_code" Seq_in_index="1" Column_name="zip_postal_code" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="employees" Non_unique="1" Key_name="state_province" Seq_in_index="1" Column_name="state_province" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="employees" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="98304" Data_free="0" Auto_increment="1" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="inventory_transaction_types">
+		<field Field="id" Type="tinyint" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="type_name" Type="varchar(50)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="inventory_transaction_types" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="inventory_transaction_types" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="inventory_transactions">
+		<field Field="id" Type="int" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="transaction_type" Type="tinyint" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="transaction_created_date" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="transaction_modified_date" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="product_id" Type="int" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="quantity" Type="int" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="purchase_order_id" Type="int" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="customer_order_id" Type="int" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="comments" Type="varchar(255)" Null="YES" Key="" Extra="" Comment="" />
+		<key Table="inventory_transactions" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="inventory_transactions" Non_unique="1" Key_name="customer_order_id" Seq_in_index="1" Column_name="customer_order_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="inventory_transactions" Non_unique="1" Key_name="customer_order_id_2" Seq_in_index="1" Column_name="customer_order_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="inventory_transactions" Non_unique="1" Key_name="product_id" Seq_in_index="1" Column_name="product_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="inventory_transactions" Non_unique="1" Key_name="product_id_2" Seq_in_index="1" Column_name="product_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="inventory_transactions" Non_unique="1" Key_name="purchase_order_id" Seq_in_index="1" Column_name="purchase_order_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="inventory_transactions" Non_unique="1" Key_name="purchase_order_id_2" Seq_in_index="1" Column_name="purchase_order_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="inventory_transactions" Non_unique="1" Key_name="transaction_type" Seq_in_index="1" Column_name="transaction_type" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="inventory_transactions" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="114688" Data_free="0" Auto_increment="1" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="invoices">
+		<field Field="id" Type="int" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="order_id" Type="int" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="invoice_date" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="due_date" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="tax" Type="decimal(19,4)" Null="YES" Key="" Default="0.0000" Extra="" Comment="" />
+		<field Field="shipping" Type="decimal(19,4)" Null="YES" Key="" Default="0.0000" Extra="" Comment="" />
+		<field Field="amount_due" Type="decimal(19,4)" Null="YES" Key="" Default="0.0000" Extra="" Comment="" />
+		<key Table="invoices" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="invoices" Non_unique="1" Key_name="id" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="invoices" Non_unique="1" Key_name="id_2" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="invoices" Non_unique="1" Key_name="fk_invoices_orders1_idx" Seq_in_index="1" Column_name="order_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="invoices" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="49152" Data_free="0" Auto_increment="1" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="order_details">
+		<field Field="id" Type="int" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="order_id" Type="int" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="product_id" Type="int" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="quantity" Type="decimal(18,4)" Null="NO" Key="" Default="0.0000" Extra="" Comment="" />
+		<field Field="unit_price" Type="decimal(19,4)" Null="YES" Key="" Default="0.0000" Extra="" Comment="" />
+		<field Field="discount" Type="double" Null="NO" Key="" Default="0" Extra="" Comment="" />
+		<field Field="status_id" Type="int" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="date_allocated" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="purchase_order_id" Type="int" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="inventory_id" Type="int" Null="YES" Key="MUL" Extra="" Comment="" />
+		<key Table="order_details" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="order_details" Non_unique="1" Key_name="id" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="order_details" Non_unique="1" Key_name="inventory_id" Seq_in_index="1" Column_name="inventory_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="order_details" Non_unique="1" Key_name="id_2" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="order_details" Non_unique="1" Key_name="id_3" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="order_details" Non_unique="1" Key_name="id_4" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="order_details" Non_unique="1" Key_name="product_id" Seq_in_index="1" Column_name="product_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="order_details" Non_unique="1" Key_name="product_id_2" Seq_in_index="1" Column_name="product_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="order_details" Non_unique="1" Key_name="purchase_order_id" Seq_in_index="1" Column_name="purchase_order_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="order_details" Non_unique="1" Key_name="id_5" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="order_details" Non_unique="1" Key_name="fk_order_details_orders1_idx" Seq_in_index="1" Column_name="order_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="order_details" Non_unique="1" Key_name="fk_order_details_order_details_status1_idx" Seq_in_index="1" Column_name="status_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="order_details" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="180224" Data_free="0" Auto_increment="1" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="order_details_status">
+		<field Field="id" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="status_name" Type="varchar(50)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="order_details_status" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="order_details_status" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="orders">
+		<field Field="id" Type="int" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="employee_id" Type="int" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="customer_id" Type="int" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="order_date" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="shipped_date" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="shipper_id" Type="int" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="ship_name" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="ship_address" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="ship_city" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="ship_state_province" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="ship_zip_postal_code" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="ship_country_region" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="shipping_fee" Type="decimal(19,4)" Null="YES" Key="" Default="0.0000" Extra="" Comment="" />
+		<field Field="taxes" Type="decimal(19,4)" Null="YES" Key="" Default="0.0000" Extra="" Comment="" />
+		<field Field="payment_type" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="paid_date" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="notes" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="tax_rate" Type="double" Null="YES" Key="" Default="0" Extra="" Comment="" />
+		<field Field="tax_status_id" Type="tinyint" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="status_id" Type="tinyint" Null="YES" Key="MUL" Default="0" Extra="" Comment="" />
+		<key Table="orders" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="orders" Non_unique="1" Key_name="customer_id" Seq_in_index="1" Column_name="customer_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="orders" Non_unique="1" Key_name="customer_id_2" Seq_in_index="1" Column_name="customer_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="orders" Non_unique="1" Key_name="employee_id" Seq_in_index="1" Column_name="employee_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="orders" Non_unique="1" Key_name="employee_id_2" Seq_in_index="1" Column_name="employee_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="orders" Non_unique="1" Key_name="id" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="orders" Non_unique="1" Key_name="id_2" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="orders" Non_unique="1" Key_name="shipper_id" Seq_in_index="1" Column_name="shipper_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="orders" Non_unique="1" Key_name="shipper_id_2" Seq_in_index="1" Column_name="shipper_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="orders" Non_unique="1" Key_name="id_3" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="orders" Non_unique="1" Key_name="tax_status" Seq_in_index="1" Column_name="tax_status_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="orders" Non_unique="1" Key_name="ship_zip_postal_code" Seq_in_index="1" Column_name="ship_zip_postal_code" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="orders" Non_unique="1" Key_name="fk_orders_orders_status1" Seq_in_index="1" Column_name="status_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="orders" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="196608" Data_free="0" Auto_increment="1" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="orders_status">
+		<field Field="id" Type="tinyint" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="status_name" Type="varchar(50)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="orders_status" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="orders_status" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="orders_tax_status">
+		<field Field="id" Type="tinyint" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="tax_status_name" Type="varchar(50)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="orders_tax_status" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="orders_tax_status" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="privileges">
+		<field Field="id" Type="int" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="privilege_name" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<key Table="privileges" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="privileges" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Auto_increment="1" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="products">
+		<field Field="supplier_ids" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="id" Type="int" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="product_code" Type="varchar(25)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="product_name" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="description" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="standard_cost" Type="decimal(19,4)" Null="YES" Key="" Default="0.0000" Extra="" Comment="" />
+		<field Field="list_price" Type="decimal(19,4)" Null="NO" Key="" Default="0.0000" Extra="" Comment="" />
+		<field Field="reorder_level" Type="int" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="target_level" Type="int" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="quantity_per_unit" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="discontinued" Type="tinyint(1)" Null="NO" Key="" Default="0" Extra="" Comment="" />
+		<field Field="minimum_reorder_quantity" Type="int" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="category" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="attachments" Type="longblob" Null="YES" Key="" Extra="" Comment="" />
+		<key Table="products" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="products" Non_unique="1" Key_name="product_code" Seq_in_index="1" Column_name="product_code" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="products" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="16384" Data_free="0" Auto_increment="1" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="purchase_order_details">
+		<field Field="id" Type="int" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="purchase_order_id" Type="int" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="product_id" Type="int" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="quantity" Type="decimal(18,4)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="unit_cost" Type="decimal(19,4)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="date_received" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="posted_to_inventory" Type="tinyint(1)" Null="NO" Key="" Default="0" Extra="" Comment="" />
+		<field Field="inventory_id" Type="int" Null="YES" Key="MUL" Extra="" Comment="" />
+		<key Table="purchase_order_details" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="purchase_order_details" Non_unique="1" Key_name="id" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="purchase_order_details" Non_unique="1" Key_name="inventory_id" Seq_in_index="1" Column_name="inventory_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="purchase_order_details" Non_unique="1" Key_name="inventory_id_2" Seq_in_index="1" Column_name="inventory_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="purchase_order_details" Non_unique="1" Key_name="purchase_order_id" Seq_in_index="1" Column_name="purchase_order_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="purchase_order_details" Non_unique="1" Key_name="product_id" Seq_in_index="1" Column_name="product_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="purchase_order_details" Non_unique="1" Key_name="product_id_2" Seq_in_index="1" Column_name="product_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="purchase_order_details" Non_unique="1" Key_name="purchase_order_id_2" Seq_in_index="1" Column_name="purchase_order_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="purchase_order_details" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="114688" Data_free="0" Auto_increment="1" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="purchase_order_status">
+		<field Field="id" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="status" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<key Table="purchase_order_status" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="purchase_order_status" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="purchase_orders">
+		<field Field="id" Type="int" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="supplier_id" Type="int" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="created_by" Type="int" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="submitted_date" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="creation_date" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="status_id" Type="int" Null="YES" Key="MUL" Default="0" Extra="" Comment="" />
+		<field Field="expected_date" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="shipping_fee" Type="decimal(19,4)" Null="NO" Key="" Default="0.0000" Extra="" Comment="" />
+		<field Field="taxes" Type="decimal(19,4)" Null="NO" Key="" Default="0.0000" Extra="" Comment="" />
+		<field Field="payment_date" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="payment_amount" Type="decimal(19,4)" Null="YES" Key="" Default="0.0000" Extra="" Comment="" />
+		<field Field="payment_method" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="notes" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="approved_by" Type="int" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="approved_date" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="submitted_by" Type="int" Null="YES" Key="" Extra="" Comment="" />
+		<key Table="purchase_orders" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="purchase_orders" Non_unique="0" Key_name="id" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="purchase_orders" Non_unique="1" Key_name="created_by" Seq_in_index="1" Column_name="created_by" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="purchase_orders" Non_unique="1" Key_name="status_id" Seq_in_index="1" Column_name="status_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="purchase_orders" Non_unique="1" Key_name="id_2" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="purchase_orders" Non_unique="1" Key_name="supplier_id" Seq_in_index="1" Column_name="supplier_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="purchase_orders" Non_unique="1" Key_name="supplier_id_2" Seq_in_index="1" Column_name="supplier_id" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="purchase_orders" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="98304" Data_free="0" Auto_increment="1" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="sales_reports">
+		<field Field="group_by" Type="varchar(50)" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="display" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="title" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="filter_row_source" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="default" Type="tinyint(1)" Null="NO" Key="" Default="0" Extra="" Comment="" />
+		<key Table="sales_reports" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="group_by" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="sales_reports" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="shippers">
+		<field Field="id" Type="int" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="company" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="last_name" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="first_name" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="email_address" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="job_title" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="business_phone" Type="varchar(25)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="home_phone" Type="varchar(25)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="mobile_phone" Type="varchar(25)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="fax_number" Type="varchar(25)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="address" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="city" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="state_province" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="zip_postal_code" Type="varchar(15)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="country_region" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="web_page" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="notes" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="attachments" Type="longblob" Null="YES" Key="" Extra="" Comment="" />
+		<key Table="shippers" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="shippers" Non_unique="1" Key_name="city" Seq_in_index="1" Column_name="city" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="shippers" Non_unique="1" Key_name="company" Seq_in_index="1" Column_name="company" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="shippers" Non_unique="1" Key_name="first_name" Seq_in_index="1" Column_name="first_name" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="shippers" Non_unique="1" Key_name="last_name" Seq_in_index="1" Column_name="last_name" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="shippers" Non_unique="1" Key_name="zip_postal_code" Seq_in_index="1" Column_name="zip_postal_code" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="shippers" Non_unique="1" Key_name="state_province" Seq_in_index="1" Column_name="state_province" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="shippers" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="98304" Data_free="0" Auto_increment="1" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="strings">
+		<field Field="string_id" Type="int" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="string_data" Type="varchar(255)" Null="YES" Key="" Extra="" Comment="" />
+		<key Table="strings" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="string_id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="strings" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Auto_increment="1" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="suppliers">
+		<field Field="id" Type="int" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="company" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="last_name" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="first_name" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="email_address" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="job_title" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="business_phone" Type="varchar(25)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="home_phone" Type="varchar(25)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="mobile_phone" Type="varchar(25)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="fax_number" Type="varchar(25)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="address" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="city" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="state_province" Type="varchar(50)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="zip_postal_code" Type="varchar(15)" Null="YES" Key="MUL" Extra="" Comment="" />
+		<field Field="country_region" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="web_page" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="notes" Type="longtext" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="attachments" Type="longblob" Null="YES" Key="" Extra="" Comment="" />
+		<key Table="suppliers" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="suppliers" Non_unique="1" Key_name="city" Seq_in_index="1" Column_name="city" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="suppliers" Non_unique="1" Key_name="company" Seq_in_index="1" Column_name="company" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="suppliers" Non_unique="1" Key_name="first_name" Seq_in_index="1" Column_name="first_name" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="suppliers" Non_unique="1" Key_name="last_name" Seq_in_index="1" Column_name="last_name" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="suppliers" Non_unique="1" Key_name="zip_postal_code" Seq_in_index="1" Column_name="zip_postal_code" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="suppliers" Non_unique="1" Key_name="state_province" Seq_in_index="1" Column_name="state_province" Collation="A" Cardinality="0" Null="YES" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="suppliers" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="98304" Data_free="0" Auto_increment="1" Create_time="2023-04-04 23:09:07" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+</database>
+</mysqldump>
