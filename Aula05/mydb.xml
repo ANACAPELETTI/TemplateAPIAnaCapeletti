@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="mydb">
+	<table_structure name="tb_cargo">
+		<field Field="id_cargo" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="nomeCargo" Type="varchar(50)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="tb_cargo" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id_cargo" Collation="A" Cardinality="4" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="tb_cargo" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="4" Avg_row_length="4096" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Create_time="2023-04-07 18:09:40" Update_time="2023-04-07 18:09:46" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="tb_cartao">
+		<field Field="id_cartao" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="data_entrada" Type="datetime" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="data_saida" Type="datetime" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="TB_cliente_id_cliente" Type="int" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="TB_pagamento_id_pagamento" Type="int" Null="NO" Key="MUL" Extra="" Comment="" />
+		<key Table="tb_cartao" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id_cartao" Collation="A" Cardinality="5" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_cartao" Non_unique="1" Key_name="fk_TB_cartao_TB_cliente1_idx" Seq_in_index="1" Column_name="TB_cliente_id_cliente" Collation="A" Cardinality="4" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_cartao" Non_unique="1" Key_name="fk_TB_cartao_TB_pagamento1_idx" Seq_in_index="1" Column_name="TB_pagamento_id_pagamento" Collation="A" Cardinality="5" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="tb_cartao" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="5" Avg_row_length="3276" Data_length="16384" Max_data_length="0" Index_length="32768" Data_free="0" Create_time="2023-04-07 18:09:41" Update_time="2023-04-07 18:09:46" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="tb_cliente">
+		<field Field="id_cliente" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="numCelular" Type="varchar(11)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="nomeCliente" Type="varchar(100)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="dataCadastro" Type="datetime" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="tb_cliente" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id_cliente" Collation="A" Cardinality="4" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_cliente" Non_unique="0" Key_name="CPF_UNIQUE" Seq_in_index="1" Column_name="id_cliente" Collation="A" Cardinality="4" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="tb_cliente" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="4" Avg_row_length="4096" Data_length="16384" Max_data_length="0" Index_length="16384" Data_free="0" Create_time="2023-04-07 18:09:40" Update_time="2023-04-07 18:09:46" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="tb_comanda">
+		<field Field="id_comanda" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="situacao" Type="varchar(100)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="dataCadastro" Type="datetime" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="numeroMesa" Type="varchar(4)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="TB_cartao_id_cartao" Type="int" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="TB_usuario_id_usuario" Type="int" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="TB_impressora_id_impressora" Type="int" Null="NO" Key="MUL" Extra="" Comment="" />
+		<key Table="tb_comanda" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id_comanda" Collation="A" Cardinality="9" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_comanda" Non_unique="0" Key_name="id_cartao_UNIQUE" Seq_in_index="1" Column_name="id_comanda" Collation="A" Cardinality="9" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_comanda" Non_unique="1" Key_name="fk_TB_comanda_TB_cartao1_idx" Seq_in_index="1" Column_name="TB_cartao_id_cartao" Collation="A" Cardinality="4" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_comanda" Non_unique="1" Key_name="fk_TB_comanda_TB_garcon1_idx" Seq_in_index="1" Column_name="TB_usuario_id_usuario" Collation="A" Cardinality="4" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_comanda" Non_unique="1" Key_name="fk_TB_comanda_TB_impressora1_idx" Seq_in_index="1" Column_name="TB_impressora_id_impressora" Collation="A" Cardinality="3" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="tb_comanda" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="9" Avg_row_length="1820" Data_length="16384" Max_data_length="0" Index_length="65536" Data_free="0" Create_time="2023-04-07 18:09:41" Update_time="2023-04-07 18:09:46" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="tb_comandaproduto">
+		<field Field="TB_comanda_id_comanda" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="TB_produto_id_produto" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="quantia" Type="int" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="precoDia" Type="decimal(5,2)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="tb_comandaproduto" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="TB_comanda_id_comanda" Collation="A" Cardinality="7" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_comandaproduto" Non_unique="0" Key_name="PRIMARY" Seq_in_index="2" Column_name="TB_produto_id_produto" Collation="A" Cardinality="15" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_comandaproduto" Non_unique="1" Key_name="fk_TB_comanda_has_TB_produto_TB_produto1_idx" Seq_in_index="1" Column_name="TB_produto_id_produto" Collation="A" Cardinality="6" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_comandaproduto" Non_unique="1" Key_name="fk_TB_comanda_has_TB_produto_TB_comanda1_idx" Seq_in_index="1" Column_name="TB_comanda_id_comanda" Collation="A" Cardinality="7" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="tb_comandaproduto" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="15" Avg_row_length="1092" Data_length="16384" Max_data_length="0" Index_length="32768" Data_free="0" Create_time="2023-04-07 18:09:41" Update_time="2023-04-07 18:09:46" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="tb_comandarelatorio">
+		<field Field="TB_comanda_id_comanda" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="TB_relatorio_id_relatorio" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<key Table="tb_comandarelatorio" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="TB_comanda_id_comanda" Collation="A" Cardinality="3" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_comandarelatorio" Non_unique="0" Key_name="PRIMARY" Seq_in_index="2" Column_name="TB_relatorio_id_relatorio" Collation="A" Cardinality="3" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_comandarelatorio" Non_unique="1" Key_name="fk_TB_comanda_has_TB_relatorio_TB_relatorio1_idx" Seq_in_index="1" Column_name="TB_relatorio_id_relatorio" Collation="A" Cardinality="3" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_comandarelatorio" Non_unique="1" Key_name="fk_TB_comanda_has_TB_relatorio_TB_comanda1_idx" Seq_in_index="1" Column_name="TB_comanda_id_comanda" Collation="A" Cardinality="3" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="tb_comandarelatorio" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="3" Avg_row_length="5461" Data_length="16384" Max_data_length="0" Index_length="32768" Data_free="0" Create_time="2023-04-07 18:09:41" Update_time="2023-04-07 18:09:46" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="tb_impressora">
+		<field Field="id_impressora" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="nomeImpressora" Type="varchar(50)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="nomeLocalImpressora" Type="varchar(50)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="modeloImpressora" Type="varchar(50)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="tb_impressora" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id_impressora" Collation="A" Cardinality="3" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="tb_impressora" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="3" Avg_row_length="5461" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Create_time="2023-04-07 18:09:41" Update_time="2023-04-07 18:09:46" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="tb_pagamento">
+		<field Field="id_pagamento" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="metodoPagamento" Type="varchar(50)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="dinheiro" Type="decimal(10,0)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="tb_pagamento" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id_pagamento" Collation="A" Cardinality="5" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="tb_pagamento" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="5" Avg_row_length="3276" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Create_time="2023-04-07 18:09:41" Update_time="2023-04-07 18:09:46" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="tb_produto">
+		<field Field="id_produto" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="nomeProduto" Type="varchar(100)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="descricao" Type="varchar(150)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="preco" Type="decimal(5,2)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="dataRegistro" Type="datetime" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="TB_tipoProduto_id_tipoProduto" Type="int" Null="NO" Key="MUL" Extra="" Comment="" />
+		<key Table="tb_produto" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id_produto" Collation="A" Cardinality="7" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_produto" Non_unique="1" Key_name="fk_TB_produto_TB_tipoProduto1_idx" Seq_in_index="1" Column_name="TB_tipoProduto_id_tipoProduto" Collation="A" Cardinality="2" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="tb_produto" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="7" Avg_row_length="2340" Data_length="16384" Max_data_length="0" Index_length="16384" Data_free="0" Create_time="2023-04-07 18:09:41" Update_time="2023-04-07 18:09:46" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="tb_relatorio">
+		<field Field="id_relatorio" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="dataRelatorio" Type="date" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="TB_tipoRelatorio_id_tipoRelatorio" Type="int" Null="NO" Key="MUL" Extra="" Comment="" />
+		<key Table="tb_relatorio" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id_relatorio" Collation="A" Cardinality="3" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_relatorio" Non_unique="1" Key_name="fk_TB_relatorio_TB_tipoRelatorio1_idx" Seq_in_index="1" Column_name="TB_tipoRelatorio_id_tipoRelatorio" Collation="A" Cardinality="3" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="tb_relatorio" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="3" Avg_row_length="5461" Data_length="16384" Max_data_length="0" Index_length="16384" Data_free="0" Create_time="2023-04-07 18:09:41" Update_time="2023-04-07 18:09:46" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="tb_tipoproduto">
+		<field Field="id_tipoProduto" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="tipoProduto" Type="varchar(50)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="tb_tipoproduto" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id_tipoProduto" Collation="A" Cardinality="2" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="tb_tipoproduto" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="2" Avg_row_length="8192" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Create_time="2023-04-07 18:09:41" Update_time="2023-04-07 18:09:46" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="tb_tiporelatorio">
+		<field Field="id_tipoRelatorio" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="tipoRelatorio" Type="varchar(100)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="tb_tiporelatorio" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id_tipoRelatorio" Collation="A" Cardinality="3" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="tb_tiporelatorio" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="3" Avg_row_length="5461" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Create_time="2023-04-07 18:09:41" Update_time="2023-04-07 18:09:46" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="tb_usuario">
+		<field Field="id_usuario" Type="int" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="login" Type="varchar(45)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="senha" Type="varchar(45)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="nome" Type="varchar(100)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="dataCadastro" Type="datetime" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="TB_cargo_id_cargo" Type="int" Null="NO" Key="MUL" Extra="" Comment="" />
+		<key Table="tb_usuario" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id_usuario" Collation="A" Cardinality="5" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_usuario" Non_unique="0" Key_name="id_garcon_UNIQUE" Seq_in_index="1" Column_name="id_usuario" Collation="A" Cardinality="5" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<key Table="tb_usuario" Non_unique="1" Key_name="fk_TB_garcon_TB_cargo1_idx" Seq_in_index="1" Column_name="TB_cargo_id_cargo" Collation="A" Cardinality="4" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="tb_usuario" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="5" Avg_row_length="3276" Data_length="16384" Max_data_length="0" Index_length="32768" Data_free="0" Create_time="2023-04-07 18:09:40" Update_time="2023-04-07 18:09:46" Collation="utf8mb3_general_ci" Create_options="" Comment="" />
+	</table_structure>
+</database>
+</mysqldump>

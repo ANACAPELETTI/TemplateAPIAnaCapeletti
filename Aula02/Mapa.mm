@@ -1,0 +1,1035 @@
+<map version="1.0.1">
+<!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
+<node CREATED="1657460228606" ID="ID_634150733" MODIFIED="1680736717955" TEXT="Pizzaria">
+<node CREATED="1657547133760" ID="ID_673927625" MODIFIED="1664651639315" POSITION="right" TEXT="config">
+<node CREATED="1657622005294" ID="ID_6408575" LINK="mapperidea.mm" MODIFIED="1657622005296" TEXT="mapperidea"/>
+</node>
+<node CREATED="1658082382585" ID="ID_822901468" LINK="window.mm" MODIFIED="1666718921186" POSITION="right" TEXT="window">
+<icon BUILTIN="Package"/>
+<node CREATED="1665861251724" ID="ID_887788670" MODIFIED="1665861257450" TEXT="@">
+<node CREATED="1665861258863" ID="ID_178988103" MODIFIED="1665861264460" TEXT="rootMenu">
+<icon BUILTIN="element"/>
+</node>
+<node CREATED="1666035316386" ID="ID_845110931" MODIFIED="1667261156979" TEXT="tituloProj">
+<icon BUILTIN="element"/>
+<node CREATED="1666035324072" ID="ID_1983641467" MODIFIED="1680736728538" TEXT="Pizzaria">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1679608654962" ID="ID_687531579" MODIFIED="1680736894929" POSITION="right" TEXT="domain">
+<icon BUILTIN="Package"/>
+<node CREATED="1667256099424" ID="ID_1958025243" MODIFIED="1680892255193" TEXT="pizzaria">
+<icon BUILTIN="Package"/>
+<node CREATED="1680892160886" ID="ID_841710809" MODIFIED="1680897787719" TEXT="Clientes">
+<icon BUILTIN="Descriptor.bean"/>
+<node CREATED="1680892160886" ID="ID_607161313" MODIFIED="1680892160886" TEXT="@">
+<node CREATED="1680892160886" MODIFIED="1680892160886" TEXT="table">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160886" MODIFIED="1680892160886" TEXT="tb_cliente">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160886" ID="ID_1424956797" MODIFIED="1680892160886" TEXT="id">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160886" MODIFIED="1680892160886" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160886" MODIFIED="1680892160886" TEXT="id_cliente">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160886" MODIFIED="1680892160886" TEXT="type">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160886" MODIFIED="1680892160886" TEXT="int()">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160886" ID="ID_1247988997" MODIFIED="1680892160886" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160886" MODIFIED="1680892160886" TEXT="Clientes que visitam a pizzaria para consumo">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1667257250146" ID="ID_831106024" MODIFIED="1679512772004" TEXT="attributes">
+<icon BUILTIN="Descriptor.grouping"/>
+<node CREATED="1680892160887" ID="ID_1921892268" MODIFIED="1680893848647" TEXT="numCelular: Texto(11)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160887" MODIFIED="1680892160887" TEXT="@">
+<node CREATED="1680892160887" MODIFIED="1680892160887" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160887" MODIFIED="1680892160887" TEXT="numCelular">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160887" MODIFIED="1680892160887" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160887" MODIFIED="1680892160887" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1680892160887" ID="ID_1542718732" MODIFIED="1680893852775" TEXT="nomeCliente: Texto(100)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160887" MODIFIED="1680892160887" TEXT="@">
+<node CREATED="1680892160887" MODIFIED="1680892160887" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160887" MODIFIED="1680892160887" TEXT="nomeCliente">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160887" MODIFIED="1680892160887" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160887" MODIFIED="1680892160887" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1680892160887" ID="ID_1173958551" MODIFIED="1680893857821" STYLE="fork" TEXT="dataCadastro: Date()">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160887" MODIFIED="1680892393557" TEXT="@">
+<node CREATED="1680892160887" MODIFIED="1680892393557" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160887" MODIFIED="1680892393557" TEXT="dataCadastro">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160887" MODIFIED="1680892393557" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160887" MODIFIED="1680892393557" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1679426299898" ID="ID_1566965926" MODIFIED="1680897799271" TEXT="cartao: pizzaria.Cartao()">
+<icon BUILTIN="Mapping.manyToOne"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160887" ID="ID_778995713" MODIFIED="1680897808847" TEXT="TipoRelatorio">
+<icon BUILTIN="Descriptor.bean"/>
+<node CREATED="1680892160887" ID="ID_780064952" MODIFIED="1680892160887" TEXT="@">
+<node CREATED="1680892160887" MODIFIED="1680892160887" TEXT="table">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160887" MODIFIED="1680892160887" TEXT="tb_tipoRelatorio">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160886" ID="ID_421583687" MODIFIED="1680893542669" TEXT="id">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160886" MODIFIED="1680892160886" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160886" ID="ID_479489198" MODIFIED="1680893555403" TEXT="id_tipoProduto">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160886" MODIFIED="1680892160886" TEXT="type">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160886" MODIFIED="1680892160886" TEXT="int()">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160888" ID="ID_108656449" MODIFIED="1680892160888" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160888" ID="ID_418276715" MODIFIED="1680892160888" TEXT="Define o tipo de relat&#xf3;rio">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1667257250146" ID="ID_961726160" MODIFIED="1679512772004" TEXT="attributes">
+<icon BUILTIN="Descriptor.grouping"/>
+<node CREATED="1680892160888" ID="ID_64707393" MODIFIED="1680893868754" TEXT="tipoRelatorio: Texto(100)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="@">
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160888" ID="ID_1504542559" MODIFIED="1680893603670" TEXT="tipoRelatorio">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1679426299898" ID="ID_1744278652" MODIFIED="1680897776040" TEXT="relatorio: pizzaria.Relatorio()">
+<icon BUILTIN="Mapping.manyToOne"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160888" FOLDED="true" ID="ID_395811751" MODIFIED="1680897779569" TEXT="TipoProduto">
+<icon BUILTIN="Descriptor.bean"/>
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="@">
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="table">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="tb_tipoproduto">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="id">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="id_tipoProduto">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="type">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="int()">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="Define o tipo de produto">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1667257250146" ID="ID_1723771702" MODIFIED="1679512772004" TEXT="attributes">
+<icon BUILTIN="Descriptor.grouping"/>
+<node CREATED="1680892160888" ID="ID_1600672337" MODIFIED="1680893876914" TEXT="tipoProduto: Texto(50)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="@">
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="tipoProduto">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160888" MODIFIED="1680892160888" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1679426299898" ID="ID_1610582718" MODIFIED="1680897754331" TEXT="produto: pizzaria.Produto()">
+<icon BUILTIN="Mapping.manyToOne"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160888" FOLDED="true" ID="ID_442995726" MODIFIED="1680897783432" TEXT="Relatorio">
+<icon BUILTIN="Descriptor.bean"/>
+<node CREATED="1680892160888" ID="ID_935087023" MODIFIED="1680892160888" TEXT="@">
+<node CREATED="1680892160888" ID="ID_1970320870" MODIFIED="1680892160888" TEXT="table">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160888" ID="ID_830795511" MODIFIED="1680892160888" TEXT="tb_relatorio">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160888" ID="ID_1367195306" MODIFIED="1680892160888" TEXT="id">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160888" ID="ID_1105753453" MODIFIED="1680892160888" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160888" ID="ID_1999815072" MODIFIED="1680892160888" TEXT="id_relatorio">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160889" ID="ID_1361328351" MODIFIED="1680892160889" TEXT="type">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160889" ID="ID_1209667418" MODIFIED="1680892160889" TEXT="int()">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160889" ID="ID_294597850" MODIFIED="1680892160889" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160889" ID="ID_1345896057" MODIFIED="1680892160889" TEXT="Armazenamento de todos os relat&#xf3;rios gerados">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1667257250146" ID="ID_1675192935" MODIFIED="1679512772004" TEXT="attributes">
+<icon BUILTIN="Descriptor.grouping"/>
+<node CREATED="1680892160889" ID="ID_768263738" MODIFIED="1680893838231" TEXT="dataRelatorio: Date()">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160889" ID="ID_1324661696" MODIFIED="1680892160889" TEXT="@">
+<node CREATED="1680892160889" ID="ID_958785756" MODIFIED="1680892160889" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160889" ID="ID_674176311" MODIFIED="1680892160889" TEXT="dataRelatorio">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160889" ID="ID_1001917864" MODIFIED="1680892160889" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160889" ID="ID_1478914015" MODIFIED="1680892160889" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1679426299898" ID="ID_368197402" MODIFIED="1680897423513" TEXT="comandaRelatorio: pizzaria.ComandaRelatorio()">
+<icon BUILTIN="Mapping.manyToOne"/>
+</node>
+<node CREATED="1679426299898" ID="ID_1848335508" MODIFIED="1680897693964" TEXT="tipoRelatorio: pizzaria.TipoRelatorio()">
+<icon BUILTIN="Mapping.oneToOne"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160889" FOLDED="true" ID="ID_12975991" MODIFIED="1680897648321" TEXT="Cartao">
+<icon BUILTIN="Descriptor.bean"/>
+<node CREATED="1680892160889" ID="ID_1570306417" MODIFIED="1680892160889" TEXT="@">
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="table">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="tb_cartao">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160890" ID="ID_1582087454" MODIFIED="1680894064252" TEXT="id">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="id_cartao">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="type">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="int()">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160890" ID="ID_566830357" MODIFIED="1680892160890" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="Cart&#xf5;es de uso no atendimento">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1667257250146" ID="ID_254123401" MODIFIED="1679512772004" TEXT="attributes">
+<icon BUILTIN="Descriptor.grouping"/>
+<node CREATED="1680892160890" ID="ID_812275615" MODIFIED="1680893915630" TEXT="dataEntrada: Date()">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="@">
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="data_entrada">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1680892160890" ID="ID_1153687708" MODIFIED="1680893923058" TEXT="dataSaida: Date()">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="@">
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="data_saida">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1679426299898" ID="ID_946779274" MODIFIED="1680897547954" TEXT="pagamento: pizzaria.Pagamento()">
+<icon BUILTIN="Mapping.oneToOne"/>
+</node>
+<node CREATED="1679426299898" ID="ID_1726238244" MODIFIED="1680897640106" TEXT="cliente: pizzaria.Cliente()">
+<icon BUILTIN="Mapping.oneToOne"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160892" FOLDED="true" ID="ID_1318359174" MODIFIED="1680897616964" TEXT="ComandaRelatorio">
+<icon BUILTIN="Descriptor.bean"/>
+<node CREATED="1680892160892" ID="ID_775874820" MODIFIED="1680892160892" TEXT="@">
+<node CREATED="1680892160892" ID="ID_1899618614" MODIFIED="1680892160892" TEXT="table">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160893" ID="ID_1290021343" MODIFIED="1680892160893" TEXT="tb_comandarelatorio">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160890" ID="ID_1689275219" MODIFIED="1680894062726" TEXT="id">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160890" ID="ID_8666305" MODIFIED="1680892160890" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160890" ID="ID_840324154" MODIFIED="1680894274619" TEXT="id_comandaRelatorio">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160890" ID="ID_1436628876" MODIFIED="1680892160890" TEXT="type">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160890" ID="ID_625325542" MODIFIED="1680892160890" TEXT="int()">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160893" ID="ID_1876032299" MODIFIED="1680892160893" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160893" ID="ID_1354475833" MODIFIED="1680892160893" TEXT="Rela&#xe7;&#xe3;o entre Comandas e Relat&#xf3;rio">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1667257250146" ID="ID_1305847662" MODIFIED="1679512772004" TEXT="attributes">
+<icon BUILTIN="Descriptor.grouping"/>
+<node CREATED="1679426299898" ID="ID_936997510" MODIFIED="1680897126737" TEXT="comanda: pizzaria.Comanda()">
+<icon BUILTIN="Mapping.oneToOne"/>
+</node>
+<node CREATED="1679426299898" ID="ID_28561547" MODIFIED="1680897599933" TEXT="relatorio: pizzaria.Relatorio()">
+<icon BUILTIN="Mapping.oneToOne"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160894" FOLDED="true" ID="ID_37109232" MODIFIED="1680897565849" TEXT="Pagamento">
+<icon BUILTIN="Descriptor.bean"/>
+<node CREATED="1680892160894" MODIFIED="1680892160894" TEXT="@">
+<node CREATED="1680892160894" MODIFIED="1680892160894" TEXT="table">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160894" MODIFIED="1680892160894" TEXT="tb_pagamento">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="id">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="id_pagamento">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="type">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="int()">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="Define o tipo de pagamento">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1667257250146" ID="ID_1121695624" MODIFIED="1679512772004" TEXT="attributes">
+<icon BUILTIN="Descriptor.grouping"/>
+<node CREATED="1680892160895" ID="ID_76738630" MODIFIED="1680895474533" TEXT="metodopagamento: Texto(50)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="@">
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="metodoPagamento">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1680892160895" ID="ID_489386102" MODIFIED="1680895538951" TEXT="dinheiro: Decimal(5,2)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="@">
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="dinheiro">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160895" MODIFIED="1680892160895" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1680892160895" FOLDED="true" ID="ID_1455640833" MODIFIED="1680897461129" TEXT="Comanda">
+<icon BUILTIN="Descriptor.bean"/>
+<node CREATED="1680892160895" ID="ID_1271872016" MODIFIED="1680892160895" TEXT="@">
+<node CREATED="1680892160895" ID="ID_884725324" MODIFIED="1680892160895" TEXT="table">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160895" ID="ID_1751402337" MODIFIED="1680892160895" TEXT="tb_comanda">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160895" ID="ID_1239509954" MODIFIED="1680892160895" TEXT="id">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160895" ID="ID_934960812" MODIFIED="1680892160895" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160895" ID="ID_780473442" MODIFIED="1680892160895" TEXT="id_comanda">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160895" ID="ID_104539847" MODIFIED="1680892160895" TEXT="type">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160895" ID="ID_1642229619" MODIFIED="1680892160895" TEXT="int()">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160895" ID="ID_1691316891" MODIFIED="1680892160895" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160895" ID="ID_634798707" MODIFIED="1680892160895" TEXT="Informa&#xe7;&#xf5;es dos pedidos dos clientes">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160896" ID="ID_939951051" MODIFIED="1680892160896" TEXT="index">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160896" ID="ID_792276518" MODIFIED="1680892160896" TEXT="id_cartao_UNIQUE">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160896" ID="ID_1416363457" MODIFIED="1680892160896" TEXT="id_comanda">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160896" ID="ID_158565721" MODIFIED="1680892160896" TEXT="fk_TB_comanda_TB_cartao1_idx">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160896" ID="ID_415123531" MODIFIED="1680892160896" TEXT="TB_cartao_id_cartao">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160896" ID="ID_405154246" MODIFIED="1680892160896" TEXT="fk_TB_comanda_TB_garcon1_idx">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160896" ID="ID_67507128" MODIFIED="1680892160896" TEXT="TB_usuario_id_usuario">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160896" ID="ID_802332852" MODIFIED="1680892160896" TEXT="fk_TB_comanda_TB_impressora1_idx">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160896" ID="ID_47352699" MODIFIED="1680892160896" TEXT="TB_impressora_id_impressora">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1667257250146" ID="ID_1491235568" MODIFIED="1680897358522" TEXT="attributes">
+<icon BUILTIN="Descriptor.grouping"/>
+<node CREATED="1680892160896" ID="ID_636289393" MODIFIED="1680895577214" TEXT="situacao: Texto(100)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160896" ID="ID_1840888970" MODIFIED="1680892160896" TEXT="@">
+<node CREATED="1680892160896" ID="ID_1680773756" MODIFIED="1680892160896" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160896" ID="ID_68967449" MODIFIED="1680892160896" TEXT="situacao">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160896" ID="ID_504214795" MODIFIED="1680892160896" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160896" ID="ID_989857598" MODIFIED="1680892160896" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1680892160896" ID="ID_1760785304" MODIFIED="1680895581640" TEXT="datacadastro: Date()">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160896" ID="ID_1653518301" MODIFIED="1680892160896" TEXT="@">
+<node CREATED="1680892160896" ID="ID_1143375786" MODIFIED="1680892160896" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160896" ID="ID_992506004" MODIFIED="1680892160896" TEXT="dataCadastro">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160896" ID="ID_914236702" MODIFIED="1680892160896" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160896" ID="ID_636041114" MODIFIED="1680892160896" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1680892160897" ID="ID_760439000" MODIFIED="1680895590744" TEXT="numeromesa: Texto(4)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160897" ID="ID_737179417" MODIFIED="1680892160897" TEXT="@">
+<node CREATED="1680892160897" ID="ID_501111140" MODIFIED="1680892160897" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160897" ID="ID_1841684058" MODIFIED="1680892160897" TEXT="numeroMesa">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160897" ID="ID_1215793292" MODIFIED="1680892160897" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160897" ID="ID_1883744543" MODIFIED="1680892160897" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1679426299898" ID="ID_525877655" MODIFIED="1680895826117" TEXT="impressora: pizzaria.Impressora()">
+<icon BUILTIN="Mapping.oneToOne"/>
+</node>
+<node CREATED="1679426299898" ID="ID_503774052" MODIFIED="1680897288831" TEXT="usuario: pizzaria.Usuario()">
+<icon BUILTIN="Mapping.oneToOne"/>
+</node>
+<node CREATED="1679426299898" ID="ID_1250134510" MODIFIED="1680897329002" TEXT="cartao: pizzaria.Cartao()">
+<icon BUILTIN="Mapping.oneToOne"/>
+</node>
+<node CREATED="1679426299898" ID="ID_1809871131" MODIFIED="1680897064427" TEXT="comandaProduto: pizzaria.ComandaProduto()">
+<icon BUILTIN="Mapping.manyToOne"/>
+</node>
+<node CREATED="1679426299898" ID="ID_751243155" MODIFIED="1680897423513" TEXT="comandaRelatorio: pizzaria.ComandaRelatorio()">
+<icon BUILTIN="Mapping.manyToOne"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160897" FOLDED="true" ID="ID_975824951" MODIFIED="1680897735084" TEXT="Impressora">
+<icon BUILTIN="Descriptor.bean"/>
+<node CREATED="1680892160897" ID="ID_1186018198" MODIFIED="1680892160897" TEXT="@">
+<node CREATED="1680892160897" ID="ID_1419973830" MODIFIED="1680892160897" TEXT="table">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160897" ID="ID_1808833442" MODIFIED="1680892160897" TEXT="tb_impressora">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160897" ID="ID_710161136" MODIFIED="1680892160897" TEXT="id">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160897" ID="ID_106720715" MODIFIED="1680892160897" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160897" ID="ID_1676924235" MODIFIED="1680892160897" TEXT="id_impressora">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160897" ID="ID_1504620712" MODIFIED="1680892160897" TEXT="type">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160897" ID="ID_1361401941" MODIFIED="1680892160897" TEXT="int()">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160897" ID="ID_347393231" MODIFIED="1680892160897" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160897" ID="ID_651728586" MODIFIED="1680892160897" TEXT="Equipamentos que imprimem as comandas">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1667257250146" ID="ID_470968229" MODIFIED="1679512772004" TEXT="attributes">
+<icon BUILTIN="Descriptor.grouping"/>
+<node CREATED="1680892160897" ID="ID_468209095" MODIFIED="1680895860804" TEXT="nomeimpressora: Texto(50)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160897" ID="ID_429598966" MODIFIED="1680892160897" TEXT="@">
+<node CREATED="1680892160897" ID="ID_541605468" MODIFIED="1680892160897" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160897" ID="ID_292508796" MODIFIED="1680892160897" TEXT="nomeImpressora">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160897" ID="ID_482873479" MODIFIED="1680892160897" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160897" ID="ID_1692593737" MODIFIED="1680892160897" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1680892160898" ID="ID_1418249278" MODIFIED="1680895865499" TEXT="nomelocalimpressora: Texto(50)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160898" ID="ID_1556312443" MODIFIED="1680892160898" TEXT="@">
+<node CREATED="1680892160898" ID="ID_398918272" MODIFIED="1680892160898" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160898" ID="ID_315180891" MODIFIED="1680892160898" TEXT="nomeLocalImpressora">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160898" ID="ID_960792368" MODIFIED="1680892160898" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160898" ID="ID_429383378" MODIFIED="1680892160898" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1680892160898" ID="ID_747981268" MODIFIED="1680895870494" TEXT="modeloimpressora: Texto(50)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160898" ID="ID_245575300" MODIFIED="1680892160898" TEXT="@">
+<node CREATED="1680892160898" ID="ID_1560253142" MODIFIED="1680892160898" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160898" ID="ID_1451538538" MODIFIED="1680892160898" TEXT="modeloImpressora">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160898" ID="ID_402725490" MODIFIED="1680892160898" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160898" ID="ID_479832197" MODIFIED="1680892160898" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1679426299898" ID="ID_36171309" MODIFIED="1680897247222" TEXT="comanda: pizzaria.Comanda()">
+<icon BUILTIN="Mapping.manyToOne"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160898" FOLDED="true" ID="ID_214297095" MODIFIED="1680897579313" TEXT="ComandaProduto">
+<icon BUILTIN="Descriptor.bean"/>
+<node CREATED="1680892160898" ID="ID_1582819950" MODIFIED="1680892160898" TEXT="@">
+<node CREATED="1680892160898" MODIFIED="1680892160898" TEXT="table">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160898" MODIFIED="1680892160898" TEXT="tb_comandaproduto">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160890" ID="ID_858054903" MODIFIED="1680895933725" TEXT="id">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160890" ID="ID_1694953371" MODIFIED="1680895941616" TEXT="id_comandaProduto">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="type">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160890" MODIFIED="1680892160890" TEXT="int()">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160898" ID="ID_1879114981" MODIFIED="1680892160898" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160898" MODIFIED="1680892160898" TEXT="Rela&#xe7;&#xe3;o entre Comandas e Produtos">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1667257250146" ID="ID_1334638240" MODIFIED="1679512772004" TEXT="attributes">
+<icon BUILTIN="Descriptor.grouping"/>
+<node CREATED="1680892160898" ID="ID_1432832886" MODIFIED="1680895958025" TEXT="quantia: int()">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160898" MODIFIED="1680892160898" TEXT="@">
+<node CREATED="1680892160898" MODIFIED="1680892160898" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160898" MODIFIED="1680892160898" TEXT="quantia">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160898" MODIFIED="1680892160898" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160898" MODIFIED="1680892160898" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1680892160898" ID="ID_1979866822" MODIFIED="1680895964596" TEXT="precodia: Decimal(5,2)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160898" MODIFIED="1680892160898" TEXT="@">
+<node CREATED="1680892160898" MODIFIED="1680892160898" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160898" MODIFIED="1680892160898" TEXT="precoDia">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160898" MODIFIED="1680892160898" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160898" MODIFIED="1680892160898" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1679426299898" ID="ID_1896030046" MODIFIED="1680897126737" TEXT="comanda: pizzaria.Comanda()">
+<icon BUILTIN="Mapping.oneToOne"/>
+</node>
+<node CREATED="1679426299898" ID="ID_711902442" MODIFIED="1680897133424" TEXT="produto: pizzaria.Produto()">
+<icon BUILTIN="Mapping.oneToOne"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160899" FOLDED="true" ID="ID_1122009958" MODIFIED="1680897677297" TEXT="Produto">
+<icon BUILTIN="Descriptor.bean"/>
+<node CREATED="1680892160899" ID="ID_1382740659" MODIFIED="1680892160899" TEXT="@">
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="table">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="tb_produto">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="id">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="id_produto">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="type">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="int()">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160899" ID="ID_1469925894" MODIFIED="1680892160899" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="Produtos que est&#xe3;o dispon&#xed;veis para vender aos clientes">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1667257250146" ID="ID_1898115138" MODIFIED="1679512772004" TEXT="attributes">
+<icon BUILTIN="Descriptor.grouping"/>
+<node CREATED="1680892160899" ID="ID_905299517" MODIFIED="1680896171371" TEXT="nomeproduto: Texto(100)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="@">
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="nomeProduto">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1680892160899" ID="ID_1108848357" MODIFIED="1680896176847" TEXT="descricao: Texto(150)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="@">
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="descricao">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1680892160899" ID="ID_458378112" MODIFIED="1680896181407" TEXT="preco: Decimal(5,2)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="@">
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="preco">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1680892160899" ID="ID_1574773749" MODIFIED="1680896186139" TEXT="dataregistro: Date()">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="@">
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="dataRegistro">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1679426299898" ID="ID_906810163" MODIFIED="1680897064427" TEXT="comandaProduto: pizzaria.ComandaProduto()">
+<icon BUILTIN="Mapping.manyToOne"/>
+</node>
+<node CREATED="1679426299898" ID="ID_152315153" MODIFIED="1680897050932" TEXT="tipoProduto: pizzaria.TipoProduto()">
+<icon BUILTIN="Mapping.oneToOne"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160899" FOLDED="true" ID="ID_437919935" MODIFIED="1680897613497" TEXT="Usuario">
+<icon BUILTIN="Descriptor.bean"/>
+<node CREATED="1680892160899" ID="ID_492761088" MODIFIED="1680892160899" TEXT="@">
+<node CREATED="1680892160899" MODIFIED="1680892160899" TEXT="table">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="tb_usuario">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="id">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="id_usuario">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="type">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="int()">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160900" ID="ID_676202336" MODIFIED="1680892160900" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="Usu&#xe1;rios que trabalham na pizzaria">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1667257250146" ID="ID_1185495268" MODIFIED="1679512772004" TEXT="attributes">
+<icon BUILTIN="Descriptor.grouping"/>
+<node CREATED="1680892160900" ID="ID_309271202" MODIFIED="1680896395266" TEXT="login: Texto(45)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="@">
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="login">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1680892160900" ID="ID_43893340" MODIFIED="1680896400371" TEXT="senha: Texto(45)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="@">
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="senha">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1680892160900" ID="ID_1567421183" MODIFIED="1680896404654" TEXT="nome: Texto(100)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="@">
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="nome">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1680892160900" ID="ID_225017332" MODIFIED="1680896522961" TEXT="datacadastro: Date()">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="@">
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="dataCadastro">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160900" MODIFIED="1680892160900" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1679426299898" ID="ID_1564433822" MODIFIED="1680896626630" TEXT="comanda: pizzaria.Comanda()">
+<icon BUILTIN="Mapping.manyToOne"/>
+</node>
+<node CREATED="1679426299898" ID="ID_164563765" MODIFIED="1680896989508" TEXT="cargo: pizzaria.Cargo()">
+<icon BUILTIN="Mapping.oneToOne"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160902" FOLDED="true" ID="ID_121819575" MODIFIED="1680897088961" TEXT="Cargo">
+<icon BUILTIN="Descriptor.bean"/>
+<node CREATED="1680892160902" ID="ID_1334397680" MODIFIED="1680892160902" TEXT="@">
+<node CREATED="1680892160902" MODIFIED="1680892160902" TEXT="table">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160902" MODIFIED="1680892160902" TEXT="tb_cargo">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160902" MODIFIED="1680892160902" TEXT="id">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160902" MODIFIED="1680892160902" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160902" MODIFIED="1680892160902" TEXT="id_cargo">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160902" MODIFIED="1680892160902" TEXT="type">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160902" MODIFIED="1680892160902" TEXT="int()">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1680892160902" MODIFIED="1680892160902" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160902" MODIFIED="1680892160902" TEXT="Define o cargo dos usu&#xe1;rios/funcion&#xe1;rios">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+<node CREATED="1667257250146" ID="ID_1077501655" MODIFIED="1679512772004" TEXT="attributes">
+<icon BUILTIN="Descriptor.grouping"/>
+<node CREATED="1680892160902" ID="ID_402729698" MODIFIED="1680896712985" TEXT="nomecargo: Texto(50)">
+<icon BUILTIN="Mapping.directToField"/>
+<node CREATED="1680892160902" MODIFIED="1680892160902" TEXT="@">
+<node CREATED="1680892160902" MODIFIED="1680892160902" TEXT="column">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160902" MODIFIED="1680892160902" TEXT="nomeCargo">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+<node CREATED="1680892160902" MODIFIED="1680892160902" TEXT="descricao">
+<icon BUILTIN="element"/>
+<node CREATED="1680892160917" MODIFIED="1680892160917" TEXT="">
+<icon BUILTIN="tag_green"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1679426299898" ID="ID_413650661" MODIFIED="1680896955001" TEXT="usuario: pizzaria.Usuario()">
+<icon BUILTIN="Mapping.oneToMany"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+</node>
+</map>
